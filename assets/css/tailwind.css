@@ -22,9 +22,9 @@
 
 @layer components {
   .glass {
-    @apply border backdrop-blur-xl;
-    border-color: rgba(212,175,55,0.18);
-    background-color: rgba(212,175,55,0.04);
+    @apply border;
+    border-color: #1f1f1f;
+    background-color: #111111;
   }
   .btn {
     @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold transition-all duration-200;
@@ -53,9 +53,9 @@
     color: #e6c558;
   }
   .card {
-    @apply backdrop-blur-xl transition-all duration-300;
-    border: 1px solid rgba(212,175,55,0.15);
-    background-color: rgba(212,175,55,0.03);
+    @apply transition-all duration-300;
+    border: 1px solid #1f1f1f;
+    background-color: #0d0d0d;
   }
   .scrollbar-thin {
     scrollbar-width: thin;

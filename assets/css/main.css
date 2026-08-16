@@ -25,11 +25,15 @@ input,
 textarea,
 select,
 button,
-iframe,
 img,
 svg,
 video {
   border-radius: var(--radius) !important;
+}
+
+iframe {
+  border-radius: var(--radius) !important;
+  border: 0;
 }
 
 a, h1, h2, h3, h4, h5, h6, strong, .text-white, .text-ink-100, .text-ink-200, .text-ink-300 {

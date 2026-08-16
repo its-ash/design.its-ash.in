@@ -1,1 +1,0 @@
-import{_ as t,e as s,f as n,x as c}from"./BJAcD-Sj.js";const o={},r={class:"min-h-screen text-ink-100"};function a(e,_){return s(),n("div",r,[c(e.$slots,"default")])}const l=t(o,[["render",a]]);export{l as default};

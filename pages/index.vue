@@ -15,12 +15,29 @@ const promptError = ref('');
 const copied = ref(false);
 const iframeRef = ref<HTMLIFrameElement | null>(null);
 const iframeKey = ref(0);
+const mobileTab = ref<'themes' | 'preview'>('themes');
+const isMobile = ref(false);
+
+function checkMobile() {
+    isMobile.value = window.innerWidth < 768;
+}
+function selectTheme(id: string) {
+    activeThemeId.value = id;
+    if (isMobile.value) mobileTab.value = 'preview';
+}
 
 const activeTheme = computed<ThemeInfo>(
     () => THEMES.find((t) => t.id === activeThemeId.value) || THEMES[0],
 );
 
 const iframeSrc = computed(() => activeTheme.value.previewPath);
+
+const fullIframeUrl = computed(() => {
+    if (import.meta.client) {
+        return window.location.origin + activeTheme.value.previewPath;
+    }
+    return `https://design.its-ash.in${activeTheme.value.previewPath}`;
+});
 
 watch(activeThemeId, (id) => {
     if (route.query.theme !== id) {
@@ -35,7 +52,10 @@ onMounted(() => {
     } else {
         router.replace({ query: { ...route.query, theme: activeThemeId.value } });
     }
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
 });
+onBeforeUnmount(() => window.removeEventListener('resize', checkMobile));
 
 async function loadPrompt(theme: ThemeInfo) {
     promptOpen.value = true;
@@ -157,39 +177,68 @@ useHead({
 <template>
     <div class="flex h-screen flex-col">
         <!-- Top bar -->
-        <header class=" flex items-center justify-between gap-3 border-b border-white/10 px-4 py-3 md:px-6">
+        <header class="flex items-center justify-between gap-2 border-b border-[#1f1f1f] bg-[#111111] px-3 py-2.5 sm:px-4 md:gap-3 md:px-6 md:py-3">
             <div class="flex items-center gap-3">
                 <div class="leading-tight">
-                    <h1 class="text-base font-bold tracking-tight md:text-lg" style="color:#e6c558">Design Prompt</h1>
+                    <h1 class="text-sm font-bold tracking-tight sm:text-base md:text-lg" style="color:#e6c558">Design Prompt</h1>
                     <p class="hidden text-xs text-ink-400 sm:block">30 UI themes · live preview + AI prompts</p>
                 </div>
             </div>
-            <div class="flex items-center gap-2">
-                <span class="hidden bg-white/5 px-2.5 py-1 text-xs font-medium text-ink-300 md:inline-flex">
+            <div class="flex items-center gap-1.5 sm:gap-2">
+                <a href="https://its-ash.github.io" target="_blank" rel="noopener noreferrer"
+                    class="btn-ghost text-xs font-medium" aria-label="Visit its-ash.github.io">
+                    <span class="hidden sm:inline">its-ash.github.io</span>
+                    <span class="sm:hidden">its-ash</span>
+                    <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M7 17L17 7M7 7h10v10" />
+                    </svg>
+                </a>
+                <span class="hidden bg-[#1f1f1f] px-2.5 py-1 text-xs font-medium text-ink-300 md:inline-flex">
                     {{ THEMES.length }} themes
                 </span>
-                <button class="btn-primary" @click="loadPrompt(activeTheme)" aria-label="Show design prompt">
+                <button class="btn-primary px-2.5 sm:px-4" @click="loadPrompt(activeTheme)" aria-label="Show design prompt">
                     <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                         aria-hidden="true">
                         <path d="M4 4h12v12H4z" />
                         <path d="M8 8h12v12" />
                     </svg>
-                    Prompt
+                    <span class="hidden sm:inline">Prompt</span>
                 </button>
             </div>
         </header>
+
+        <!-- Mobile tab switcher -->
+        <nav class="flex border-b border-[#1f1f1f] bg-[#111111] md:hidden" aria-label="Mobile navigation">
+            <button
+                class="flex-1 py-2.5 text-xs font-semibold uppercase tracking-wider transition"
+                :class="mobileTab === 'themes' ? 'bg-[#1f1f1f]' : 'text-ink-400'"
+                :style="mobileTab === 'themes' ? 'color:#e6c558' : ''"
+                @click="mobileTab = 'themes'"
+            >
+                Themes
+            </button>
+            <button
+                class="flex-1 py-2.5 text-xs font-semibold uppercase tracking-wider transition"
+                :class="mobileTab === 'preview' ? 'bg-[#1f1f1f]' : 'text-ink-400'"
+                :style="mobileTab === 'preview' ? 'color:#e6c558' : ''"
+                @click="mobileTab = 'preview'"
+            >
+                Preview
+            </button>
+        </nav>
 
         <!-- Body: sidebar + preview -->
         <div class="flex flex-1 overflow-hidden">
             <!-- Sidebar -->
             <aside
-                class="scrollbar-thin w-72 shrink-0 overflow-y-auto border-r border-white/10 bg-white/[0.02] md:w-80"
+                class="scrollbar-thin w-full shrink-0 overflow-y-auto border-r border-[#1f1f1f] bg-[#0d0d0d] md:w-80"
+                :class="isMobile && mobileTab !== 'themes' ? 'hidden' : 'block'"
                 aria-label="Theme list"
             >
-                <div class="sticky top-0 z-10 border-b border-white/10 bg-ink-950/70 px-4 py-3 backdrop-blur-xl">
+                <div class="sticky top-0 z-10 border-b border-[#1f1f1f] bg-[#111111] px-4 py-3">
                     <p class="text-xs font-semibold uppercase tracking-wider text-ink-400">Themes</p>
                 </div>
-                <div class="grid grid-cols-1 gap-3 p-3">
+                <div class="grid grid-cols-2 gap-3 p-3 md:grid-cols-1">
                     <button
                         v-for="theme in THEMES"
                         :key="theme.id"
@@ -206,9 +255,9 @@ useHead({
                                 : ''
                         "
                         :aria-current="theme.id === activeThemeId ? 'true' : 'false'"
-                        @click="activeThemeId = theme.id"
+                        @click="selectTheme(theme.id)"
                     >
-                        <div class="relative aspect-[16/10] w-full overflow-hidden bg-ink-950">
+                        <div class="relative aspect-[16/10] w-full overflow-hidden bg-ink-950 pointer-events-none">
                             <iframe
                                 :src="theme.previewPath"
                                 :title="`${theme.name} thumbnail`"
@@ -221,7 +270,7 @@ useHead({
                                 aria-hidden="true"
                             />
                             <span
-                                class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                                class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100 pointer-events-none"
                                 aria-hidden="true"
                             />
                         </div>
@@ -239,11 +288,17 @@ useHead({
             </aside>
 
             <!-- Preview pane -->
-            <main class="flex flex-1 flex-col overflow-hidden">
-                <div class="flex items-center justify-between gap-2 border-b border-white/10 px-4 py-2.5">
+            <main
+                class="flex flex-1 flex-col overflow-hidden"
+                :class="isMobile && mobileTab !== 'preview' ? 'hidden' : 'flex'"
+            >
+                <div class="flex items-center justify-between gap-2 border-b border-[#1f1f1f] bg-[#111111] px-4 py-2.5">
                     <div class="min-w-0">
                         <h2 class="truncate text-sm font-semibold text-white">{{ activeTheme.name }}</h2>
-                        <p class="truncate text-xs text-ink-400 font-mono">{{ iframeSrc }}</p>
+                        <a :href="fullIframeUrl" target="_blank" rel="noopener noreferrer"
+                            class="truncate text-xs text-ink-400 font-mono hover:underline hover:text-[#e6c558] transition block">
+                            {{ fullIframeUrl }}
+                        </a>
                     </div>
                     <button class="btn-ghost" @click="reloadIframe" aria-label="Reload preview">
                         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -264,12 +319,12 @@ useHead({
         </div>
 
         <!-- Prompt modal -->
-        <div v-if="promptOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80" role="dialog"
+        <div v-if="promptOpen" class="fixed inset-0 z-50 flex items-center justify-center p-0 sm:p-4 bg-black/80" role="dialog"
             aria-modal="true" aria-labelledby="promptTitle">
-            <div class="absolute inset-0 bg-black/70 backdrop-blur-md" @click="promptOpen = false" />
+            <div class="absolute inset-0 bg-black/85" @click="promptOpen = false" />
             <div
-                class="scrollbar-thin relative flex max-h-[88vh] w-full max-w-3xl flex-col overflow-hidden border border-white/10 shadow-2xl">
-                <header class="flex items-center justify-between gap-2 border-b border-white/10 px-5 py-3">
+                class="scrollbar-thin relative flex h-full w-full max-w-3xl flex-col overflow-hidden border border-[#2a2a2a] bg-[#111111] shadow-2xl sm:h-auto sm:max-h-[88vh] sm:border">
+                <header class="flex items-center justify-between gap-2 border-b border-[#1f1f1f] px-5 py-3">
                     <div class="flex items-center gap-2">
                         <h3 id="promptTitle" class="text-sm font-semibold text-white">
                             Design Prompt — {{ activeTheme.name }}
