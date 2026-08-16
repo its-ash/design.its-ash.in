@@ -1,0 +1,63 @@
+@import './tailwind.css';
+
+:root {
+  color-scheme: dark;
+  --radius: 8px;
+  --bg: #0a0a0a;
+  --gold: #ffd84d;
+  --gold-dim: #ffd84d;
+}
+
+html,
+body {
+  background: var(--bg) !important;
+  color: var(--gold) !important;
+  border-radius: 0 !important;
+}
+
+*,
+*::before,
+*::after {
+  border-radius: var(--radius) !important;
+}
+
+input,
+textarea,
+select,
+button,
+iframe,
+img,
+svg,
+video {
+  border-radius: var(--radius) !important;
+}
+
+a, h1, h2, h3, h4, h5, h6, strong, .text-white, .text-ink-100, .text-ink-200, .text-ink-300 {
+  color: var(--gold) !important;
+}
+
+.text-ink-400, .text-ink-500, small, .text-muted {
+  color: var(--gold-dim) !important;
+}
+
+::selection {
+  background: var(--gold) !important;
+  color: var(--bg) !important;
+}
+
+.scrollbar-thin {
+  scrollbar-color: var(--gold-dim) transparent !important;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: var(--gold-dim) !important;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: var(--gold) !important;
+}
+
+.no-radius,
+.no-radius *,
+.prose-prompt pre,
+.prose-prompt code {
+  border-radius: 4px !important;
+}

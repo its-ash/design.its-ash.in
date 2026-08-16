@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXUS // Terminal CLI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+
+<div class="scanline-overlay" aria-hidden="true"></div>
+
+<!-- ========== NAVBAR ========== -->
+<header class="navbar" id="navbar">
+  <nav class="nav-container">
+    <a href="#hero" class="logo"><span class="material-symbols-outlined">terminal</span> NEXUS</a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
+    <label for="nav-toggle" class="nav-burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
+    <ul class="nav-links">
+      <li><a href="#hero">~/home</a></li>
+      <li><a href="#features">~/features</a></li>
+      <li><a href="#slider">~/showcase</a></li>
+      <li><a href="#pricing">~/pricing</a></li>
+      <li><a href="#contact">~/contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn btn-ghost" onclick="openPopup('loginPopup')">[ login ]</button>
+      <button class="btn btn-primary" onclick="openPopup('signupPopup')">[ signup ]</button>
+      <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle theme" aria-pressed="false"><span class="material-symbols-outlined">dark_mode</span></button>
+    </div>
+  </nav>
+</header>
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="badge"><span class="material-symbols-outlined">bolt</span> NEW v3.0 --now-with-ai</span>
+    <h1 class="hero-title">> build_the_future <br><span class="gradient-text">--faster_than_ever</span><span class="cursor-blink">█</span></h1>
+    <p class="hero-subtitle">$ a premium theme with every html element you need — heroes, sliders, forms, popups, validation, and more. production-ready.</p>
+    <div class="hero-cta">
+      <button class="btn btn-primary btn-lg" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">[ start_free_trial ]</button>
+      <button class="btn btn-outline btn-lg" onclick="openPopup('videoPopup')"><span class="material-symbols-outlined">play_arrow</span> watch_demo</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><strong data-count="50000">0</strong><span>users</span></div>
+      <div class="stat"><strong data-count="1200">0</strong><span>projects</span></div>
+      <div class="stat"><strong data-count="99">0</strong><span>% uptime</span></div>
+      <div class="stat"><strong data-count="24">0</strong><span>/7 support</span></div>
+    </div>
+  </div>
+  <a href="#features" class="scroll-indicator" aria-label="Scroll down"><span class="material-symbols-outlined">expand_more</span></a>
+</section>
+
+<!-- ========== ALERTS / NOTIFICATIONS ========== -->
+<section class="container">
+  <div class="alert alert-info"><span class="material-symbols-outlined">info</span> <strong>[INFO]</strong> this is an info alert with <a href="#">a_link</a>.</div>
+  <div class="alert alert-success"><span class="material-symbols-outlined">check_circle</span> <strong>[OK]</strong> your action was completed successfully.</div>
+  <div class="alert alert-warning"><span class="material-symbols-outlined">warning</span> <strong>[WARN]</strong> please review your settings before continuing.</div>
+  <div class="alert alert-error"><span class="material-symbols-outlined">error</span> <strong>[ERR]</strong> something went wrong. please try again.</div>
+  <div class="alert alert-dismissible">
+    <span class="material-symbols-outlined">lightbulb</span> <strong>[TIP]</strong> you can dismiss this alert.
+    <button class="alert-close" onclick="this.parentElement.remove()" aria-label="Close"><span class="material-symbols-outlined">close</span></button>
+  </div>
+</section>
+
+<!-- ========== FEATURES (CARDS / GRID) ========== -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">// features</span>
+      <h2>everything_you_need</h2>
+      <p>$ a comprehensive showcase of semantic html elements styled with a terminal theme.</p>
+    </div>
+    <div class="features-grid">
+      <div class="card feature-card">
+        <div class="card-icon"><span class="material-symbols-outlined">palette</span></div>
+        <h3>modern_design</h3>
+        <p>clean, responsive layouts built with css custom properties and grid.</p>
+        <span class="tag tag-primary">[UI/UX]</span>
+      </div>
+      <div class="card feature-card">
+        <div class="card-icon"><span class="material-symbols-outlined">bolt</span></div>
+        <h3>lightning_fast</h3>
+        <p>optimized for performance with lazy loading and minimal dependencies.</p>
+        <span class="tag tag-success">[PERF]</span>
+      </div>
+      <div class="card feature-card">
+        <div class="card-icon"><span class="material-symbols-outlined">lock</span></div>
+        <h3>secure</h3>
+        <p>built-in validation, csrf protection, and accessibility standards.</p>
+        <span class="tag tag-warning">[SEC]</span>
+      </div>
+      <div class="card feature-card">
+        <div class="card-icon"><span class="material-symbols-outlined">smartphone</span></div>
+        <h3>responsive</h3>
+        <p>mobile-first design that adapts beautifully to any screen size.</p>
+        <span class="tag tag-info">[MOBILE]</span>
+      </div>
+      <div class="card feature-card">
+        <div class="card-icon"><span class="material-symbols-outlined">dark_mode</span></div>
+        <h3>dark_mode</h3>
+        <p>terminal is inherently dark — the default and only true mode.</p>
+        <span class="tag tag-error">[THEME]</span>
+      </div>
+      <div class="card feature-card">
+        <div class="card-icon"><span class="material-symbols-outlined">accessibility</span></div>
+        <h3>accessible</h3>
+        <p>aria labels, keyboard navigation, and semantic markup throughout.</p>
+        <span class="tag tag-primary">[A11Y]</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== IMAGE SLIDER / CAROUSEL ========== -->
+<section class="section section-alt" id="slider">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">// showcase</span>
+      <h2>image_carousel</h2>
+      <p>$ auto-playing slider with manual controls.</p>
+    </div>
+    <div class="slider" id="slider">
+      <div class="slider-track" id="sliderTrack">
+        <div class="slide slide-i"><h3>slide_one</h3><p>// gradient background</p></div>
+        <div class="slide slide-ii"><h3>slide_two</h3><p>// gradient background</p></div>
+        <div class="slide slide-iii"><h3>slide_three</h3><p>// gradient background</p></div>
+        <div class="slide slide-iv"><h3>slide_four</h3><p>// gradient background</p></div>
+        <div class="slide slide-v"><h3>slide_five</h3><p>// gradient background</p></div>
+      </div>
+      <button class="slider-btn slider-prev" onclick="moveSlider(-1)" aria-label="Previous slide"><span class="material-symbols-outlined">chevron_left</span></button>
+      <button class="slider-btn slider-next" onclick="moveSlider(1)" aria-label="Next slide"><span class="material-symbols-outlined">chevron_right</span></button>
+      <div class="slider-dots" id="sliderDots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ACCORDION ========== -->
+<section class="section">
+  <div class="container container-narrow">
+    <div class="section-header">
+      <span class="section-tag">// faq</span>
+      <h2>frequently_asked_questions</h2>
+    </div>
+    <div class="accordion">
+      <details class="accordion-item" open>
+        <summary>$ what is this theme?</summary>
+        <p>a premium html landing page showcasing every common html element with modern styling.</p>
+      </details>
+      <details class="accordion-item">
+        <summary>$ is it responsive?</summary>
+        <p>yes, it uses a mobile-first approach with css grid and flexbox.</p>
+      </details>
+      <details class="accordion-item">
+        <summary>$ does it support dark mode?</summary>
+        <p>absolutely — terminal is dark-mode by design. toggle for the optional inverted scheme.</p>
+      </details>
+      <details class="accordion-item">
+        <summary>$ can i customize colors?</summary>
+        <p>all colors are css custom properties, so you can override them in one place.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TABS ========== -->
+<section class="section section-alt">
+  <div class="container container-narrow">
+    <div class="section-header">
+      <span class="section-tag">// tabs</span>
+      <h2>tabbed_content</h2>
+    </div>
+    <div class="tabs">
+      <input type="radio" name="tab" id="tab1" checked>
+      <input type="radio" name="tab" id="tab2">
+      <input type="radio" name="tab" id="tab3">
+      <div class="tab-labels">
+        <label for="tab1" class="tab-label">overview</label>
+        <label for="tab2" class="tab-label">features</label>
+        <label for="tab3" class="tab-label">reviews</label>
+      </div>
+      <div class="tab-content">
+        <div class="tab-panel">
+          <h3>overview</h3>
+          <p>get a high-level view of the product and its capabilities. this tab uses pure css radio inputs for switching.</p>
+        </div>
+        <div class="tab-panel">
+          <h3>features</h3>
+          <ul>
+            <li>-- hero section with animated gradient text</li>
+            <li>-- auto-playing image carousel</li>
+            <li>-- forms with real-time validation</li>
+            <li>-- modal popups and dialogs</li>
+          </ul>
+        </div>
+        <div class="tab-panel">
+          <h3>reviews</h3>
+          <blockquote>★★★★★ "best landing page theme i've used." — jane_doe</blockquote>
+          <blockquote>★★★★★ "incredibly polished and complete." — john_smith</blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FORM ELEMENTS SHOWCASE ========== -->
+<section class="section" id="forms">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">// forms</span>
+      <h2>form_elements</h2>
+      <p>$ every input type, styled consistently.</p>
+    </div>
+    <form class="form-grid" id="showcaseForm" novalidate>
+      <div class="form-group">
+        <label for="text">text_input</label>
+        <input type="text" id="text" placeholder="enter text">
+      </div>
+      <div class="form-group">
+        <label for="email">email</label>
+        <input type="email" id="email" placeholder="you@example.com">
+      </div>
+      <div class="form-group">
+        <label for="password">password</label>
+        <input type="password" id="password" placeholder="••••••••">
+      </div>
+      <div class="form-group">
+        <label for="number">number</label>
+        <input type="number" id="number" placeholder="0" min="0" max="100">
+      </div>
+      <div class="form-group">
+        <label for="tel">telephone</label>
+        <input type="tel" id="tel" placeholder="+1 (555) 000-0000">
+      </div>
+      <div class="form-group">
+        <label for="url">url</label>
+        <input type="url" id="url" placeholder="https://example.com">
+      </div>
+      <div class="form-group">
+        <label for="search">search</label>
+        <input type="search" id="search" placeholder="search...">
+      </div>
+      <div class="form-group">
+        <label for="date">date</label>
+        <input type="date" id="date">
+      </div>
+      <div class="form-group">
+        <label for="time">time</label>
+        <input type="time" id="time">
+      </div>
+      <div class="form-group">
+        <label for="datetime">datetime_local</label>
+        <input type="datetime-local" id="datetime">
+      </div>
+      <div class="form-group">
+        <label for="month">month</label>
+        <input type="month" id="month">
+      </div>
+      <div class="form-group">
+        <label for="week">week</label>
+        <input type="week" id="week">
+      </div>
+      <div class="form-group">
+        <label for="color">color_picker</label>
+        <input type="color" id="color" value="#33ff00">
+      </div>
+      <div class="form-group">
+        <label for="range">range_slider: <span id="rangeVal">50</span></label>
+        <input type="range" id="range" min="0" max="100" value="50" oninput="document.getElementById('rangeVal').textContent=this.value">
+      </div>
+      <div class="form-group">
+        <label for="file">file_upload</label>
+        <input type="file" id="file">
+      </div>
+      <div class="form-group">
+        <label for="select">select_dropdown</label>
+        <select id="select">
+          <optgroup label="fruits">
+            <option>apple</option>
+            <option>banana</option>
+            <option>cherry</option>
+          </optgroup>
+          <optgroup label="vegetables">
+            <option>carrot</option>
+            <option>spinach</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="datalist">datalist_(autocomplete)</label>
+        <input type="text" id="datalist" list="browsers" placeholder="type a browser...">
+        <datalist id="browsers">
+          <option value="chrome">
+          <option value="firefox">
+          <option value="safari">
+          <option value="edge">
+        </datalist>
+      </div>
+      <div class="form-group form-group-full">
+        <label for="textarea">textarea</label>
+        <textarea id="textarea" rows="4" placeholder="write your message..."></textarea>
+      </div>
+      <div class="form-group">
+        <label>checkboxes</label>
+        <div class="checkbox-group">
+          <label class="checkbox"><input type="checkbox" checked> [x] option_a</label>
+          <label class="checkbox"><input type="checkbox"> [ ] option_b</label>
+          <label class="checkbox"><input type="checkbox"> [ ] option_c</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>radio_buttons</label>
+        <div class="radio-group">
+          <label class="radio"><input type="radio" name="r" checked> ( ) yes</label>
+          <label class="radio"><input type="radio" name="r"> ( ) no</label>
+          <label class="radio"><input type="radio" name="r"> ( ) maybe</label>
+        </div>
+      </div>
+      <div class="form-group form-group-full">
+        <label class="checkbox"><input type="checkbox" id="terms"> i agree to the <a href="#">terms_&_conditions</a></label>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ========== TABLE ========== -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">// data</span>
+      <h2>data_table</h2>
+    </div>
+    <div class="table-wrapper">
+      <table class="table">
+        <thead>
+          <tr><th>#</th><th>name</th><th>email</th><th>role</th><th>status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>alice_johnson</td><td>alice@nexus.io</td><td>admin</td><td><span class="tag tag-success">[ACTIVE]</span></td></tr>
+          <tr><td>2</td><td>bob_smith</td><td>bob@nexus.io</td><td>editor</td><td><span class="tag tag-success">[ACTIVE]</span></td></tr>
+          <tr><td>3</td><td>carol_white</td><td>carol@nexus.io</td><td>viewer</td><td><span class="tag tag-warning">[PENDING]</span></td></tr>
+          <tr><td>4</td><td>dave_brown</td><td>dave@nexus.io</td><td>editor</td><td><span class="tag tag-error">[INACTIVE]</span></td></tr>
+          <tr><td>5</td><td>eve_davis</td><td>eve@nexus.io</td><td>admin</td><td><span class="tag tag-success">[ACTIVE]</span></td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td colspan="5">total: 5 members</td></tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROGRESS BARS ========== -->
+<section class="section">
+  <div class="container container-narrow">
+    <div class="section-header">
+      <span class="section-tag">// progress</span>
+      <h2>progress_indicators</h2>
+    </div>
+    <div class="progress-group">
+      <div class="progress-item">
+        <label>HTML <span>95%</span></label>
+        <div class="progress"><div class="progress-bar" style="width:95%"></div></div>
+      </div>
+      <div class="progress-item">
+        <label>CSS <span>88%</span></label>
+        <div class="progress"><div class="progress-bar" style="width:88%"></div></div>
+      </div>
+      <div class="progress-item">
+        <label>JavaScript <span>76%</span></label>
+        <div class="progress"><div class="progress-bar" style="width:76%"></div></div>
+      </div>
+      <div class="progress-item">
+        <label>Design <span>90%</span></label>
+        <div class="progress"><div class="progress-bar" style="width:90%"></div></div>
+      </div>
+    </div>
+    <h4 class="meter-label">meter_(gauge)</h4>
+    <meter value="0.6" min="0" max="1" low="0.3" high="0.8" optimum="0.9">60%</meter>
+  </div>
+</section>
+
+<!-- ========== CONTACT FORM WITH VALIDATION ========== -->
+<section class="section section-alt" id="contact">
+  <div class="container container-narrow">
+    <div class="section-header">
+      <span class="section-tag">// contact</span>
+      <h2>get_in_touch</h2>
+      <p>$ form with real-time javascript validation.</p>
+    </div>
+    <form id="contactForm" class="form-card" novalidate>
+      <div class="form-group">
+        <label for="cName">full_name <span class="req">*</span></label>
+        <input type="text" id="cName" name="name" placeholder="john_doe" required>
+        <small class="error-msg" id="errName"></small>
+      </div>
+      <div class="form-group">
+        <label for="cEmail">email <span class="req">*</span></label>
+        <input type="email" id="cEmail" name="email" placeholder="you@example.com" required>
+        <small class="error-msg" id="errEmail"></small>
+      </div>
+      <div class="form-group">
+        <label for="cPhone">phone</label>
+        <input type="tel" id="cPhone" name="phone" placeholder="+1 (555) 000-0000">
+        <small class="error-msg" id="errPhone"></small>
+      </div>
+      <div class="form-group">
+        <label for="cSubject">subject <span class="req">*</span></label>
+        <select id="cSubject" name="subject" required>
+          <option value="">-- choose --</option>
+          <option>general_inquiry</option>
+          <option>support</option>
+          <option>sales</option>
+          <option>partnership</option>
+        </select>
+        <small class="error-msg" id="errSubject"></small>
+      </div>
+      <div class="form-group">
+        <label for="cMessage">message <span class="req">*</span></label>
+        <textarea id="cMessage" name="message" rows="5" placeholder="your message..." required minlength="10"></textarea>
+        <small class="error-msg" id="errMessage"></small>
+      </div>
+      <div class="form-group">
+        <label class="checkbox"><input type="checkbox" id="cTerms" required> i agree to be contacted <span class="req">*</span></label>
+        <small class="error-msg" id="errTerms"></small>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg btn-block">[ send_message ]</button>
+      <div class="form-success" id="formSuccess" hidden><span class="material-symbols-outlined">check_circle</span> [OK] thank you! your message has been sent successfully.</div>
+    </form>
+  </div>
+</section>
+
+<!-- ========== TIMELINE ========== -->
+<section class="section">
+  <div class="container container-narrow">
+    <div class="section-header">
+      <span class="section-tag">// timeline</span>
+      <h2>our_journey</h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><span class="timeline-date">2021</span><h3>founded</h3><p>nexus was born from a simple idea.</p></div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><span class="timeline-date">2022</span><h3>first_10k_users</h3><p>rapid growth and community love.</p></div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><span class="timeline-date">2023</span><h3>series_a</h3><p>raised $5m to scale the platform.</p></div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><span class="timeline-date">2024</span><h3>global_launch</h3><p>now available in 50+ countries.</p></div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><span class="timeline-date">2025</span><h3>ai_integration</h3><p>launched ai-powered features.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PRICING ========== -->
+<section class="section section-alt" id="pricing">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">// pricing</span>
+      <h2>simple_transparent_pricing</h2>
+    </div>
+    <div class="pricing-grid">
+      <div class="card pricing-card">
+        <h3>starter</h3>
+        <div class="price"><span class="currency">$</span>0<span class="period">/mo</span></div>
+        <ul class="pricing-features">
+          <li>[+] 1 project</li>
+          <li>[+] 1gb storage</li>
+          <li>[+] community support</li>
+          <li class="muted">[-] custom domain</li>
+          <li class="muted">[-] analytics</li>
+        </ul>
+        <button class="btn btn-outline btn-block">[ get_started ]</button>
+      </div>
+      <div class="card pricing-card pricing-featured">
+        <span class="pricing-badge">[ MOST_POPULAR ]</span>
+        <h3>pro</h3>
+        <div class="price"><span class="currency">$</span>29<span class="period">/mo</span></div>
+        <ul class="pricing-features">
+          <li>[+] 25 projects</li>
+          <li>[+] 50gb storage</li>
+          <li>[+] priority support</li>
+          <li>[+] custom domain</li>
+          <li>[+] analytics</li>
+        </ul>
+        <button class="btn btn-primary btn-block">[ choose_pro ]</button>
+      </div>
+      <div class="card pricing-card">
+        <h3>enterprise</h3>
+        <div class="price"><span class="currency">$</span>99<span class="period">/mo</span></div>
+        <ul class="pricing-features">
+          <li>[+] unlimited projects</li>
+          <li>[+] 1tb storage</li>
+          <li>[+] 24/7 support</li>
+          <li>[+] custom domain</li>
+          <li>[+] advanced analytics</li>
+        </ul>
+        <button class="btn btn-outline btn-block">[ contact_sales ]</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TESTIMONIALS ========== -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">// testimonials</span>
+      <h2>what_people_say</h2>
+    </div>
+    <div class="testimonial-grid">
+      <blockquote class="card testimonial">
+        <p>"this is the most complete landing page i've ever seen. every element is polished."</p>
+        <footer><strong>sarah_connor</strong> — ceo, techcorp</footer>
+      </blockquote>
+      <blockquote class="card testimonial">
+        <p>"the attention to detail is incredible. forms, sliders, popups — all working flawlessly."</p>
+        <footer><strong>mike_ross</strong> — designer, studio_x</footer>
+      </blockquote>
+      <blockquote class="card testimonial">
+        <p>"i shipped my product page in minutes. the validation and theming saved me days."</p>
+        <footer><strong>lina_wang</strong> — dev, startupy</footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA BANNER ========== -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>ready_to_get_started?</h2>
+    <p>$ join thousands of satisfied customers today.</p>
+    <button class="btn btn-primary btn-lg" onclick="openPopup('signupPopup')">[ create_free_account ]</button>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4><span class="material-symbols-outlined">terminal</span> NEXUS</h4>
+        <p>building the future, one element at a time.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Twitter"><span class="material-symbols-outlined">alternate_email</span></a>
+          <a href="#" aria-label="GitHub"><span class="material-symbols-outlined">code</span></a>
+          <a href="#" aria-label="LinkedIn"><span class="material-symbols-outlined">group</span></a>
+          <a href="#" aria-label="YouTube"><span class="material-symbols-outlined">play_arrow</span></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>// product</h4>
+        <ul><li><a href="#">features</a></li><li><a href="#">pricing</a></li><li><a href="#">docs</a></li><li><a href="#">changelog</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>// company</h4>
+        <ul><li><a href="#">about</a></li><li><a href="#">blog</a></li><li><a href="#">careers</a></li><li><a href="#">contact</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>// legal</h4>
+        <ul><li><a href="#">privacy</a></li><li><a href="#">terms</a></li><li><a href="#">cookies</a></li><li><a href="#">licenses</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 NEXUS. all rights reserved.</p>
+      <p>made with <span class="material-symbols-outlined">favorite</span> using semantic html</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== POPUP: LOGIN ========== -->
+<div class="popup-overlay" id="loginPopup">
+  <div class="popup">
+    <button class="popup-close" onclick="closePopup('loginPopup')" aria-label="Close"><span class="material-symbols-outlined">close</span></button>
+    <h2>+--- welcome_back ---+</h2>
+    <p>$ sign in to your account</p>
+    <form onsubmit="event.preventDefault(); closePopup('loginPopup'); showToast('[OK] logged in successfully!')" novalidate>
+      <div class="form-group">
+        <label for="loginEmail">email</label>
+        <input type="email" id="loginEmail" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="loginPass">password</label>
+        <input type="password" id="loginPass" placeholder="••••••••" required>
+      </div>
+      <div class="form-group">
+        <label class="checkbox"><input type="checkbox"> remember me</label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">[ sign_in ]</button>
+      <p class="popup-footer">no account? <a href="#" onclick="closePopup('loginPopup'); openPopup('signupPopup')">signup</a></p>
+    </form>
+  </div>
+</div>
+
+<!-- ========== POPUP: SIGNUP ========== -->
+<div class="popup-overlay" id="signupPopup">
+  <div class="popup">
+    <button class="popup-close" onclick="closePopup('signupPopup')" aria-label="Close"><span class="material-symbols-outlined">close</span></button>
+    <h2>+--- create_account ---+</h2>
+    <p>$ start your free trial today</p>
+    <form onsubmit="event.preventDefault(); closePopup('signupPopup'); showToast('[OK] account created!')" novalidate>
+      <div class="form-group">
+        <label for="suName">full_name</label>
+        <input type="text" id="suName" placeholder="john_doe" required>
+      </div>
+      <div class="form-group">
+        <label for="suEmail">email</label>
+        <input type="email" id="suEmail" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="suPass">password</label>
+        <input type="password" id="suPass" placeholder="••••••••" required minlength="6">
+        <small>password must be at least 6 characters</small>
+      </div>
+      <div class="form-group">
+        <label class="checkbox"><input type="checkbox" required> i accept the <a href="#">terms</a></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">[ create_account ]</button>
+      <p class="popup-footer">have an account? <a href="#" onclick="closePopup('signupPopup'); openPopup('loginPopup')">sign_in</a></p>
+    </form>
+  </div>
+</div>
+
+<!-- ========== POPUP: VIDEO ========== -->
+<div class="popup-overlay" id="videoPopup">
+  <div class="popup popup-video">
+    <button class="popup-close" onclick="closePopup('videoPopup')" aria-label="Close"><span class="material-symbols-outlined">close</span></button>
+    <h2>+--- product_demo ---+</h2>
+    <div class="video-placeholder">
+      <button class="play-btn" onclick="this.parentElement.innerHTML='<iframe width=100% height=100% src=https://www.youtube.com/embed/dQw4w9WgXcQ frameborder=0 allowfullscreen></iframe>'"><span class="material-symbols-outlined">play_arrow</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== TOAST ========== -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ========== BACK TO TOP ========== -->
+<button class="back-to-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><span class="material-symbols-outlined">arrow_upward</span></button>
+
+<script src="script.js"></script>
+</body>
+</html>

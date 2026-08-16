@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://design-prompt.example.com/sitemap.xml
