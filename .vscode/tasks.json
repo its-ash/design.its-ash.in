@@ -1,0 +1,38 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "run",
+      "type": "shell",
+      "command": "npm run dev",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "revealProblems": "onProblem"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "deploy",
+      "type": "shell",
+      "command": "npm run deploy",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": ["$tsc"]
+    },
+    {
+      "label": "commit",
+      "type": "shell",
+      "command": "git add -A && MSG=\"$(gh copilot -- --allow-all-tools -p 'Generate a concise git commit message in Conventional Commits format (type(scope): description). Only output the commit message, nothing else. No quotes. No explanation.' 2>&1 | grep -E '^(feat|fix|chore|docs|style|refactor|test|build|ci|perf|revert)(\\(.+\\))?: .+' | head -1)\" && echo \"Commit message: $MSG\" && git commit -m \"$MSG\"",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+# START nuxt-robots (indexable)
+User-agent: *
+Allow: /
+
+Sitemap: https://design.its-ash.in/sitemap.xml
+Sitemap: https://design-prompt.example.com/sitemap.xml
+# END nuxt-robots

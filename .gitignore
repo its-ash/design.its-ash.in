@@ -6,3 +6,6 @@ dist
 .cache
 *.log
 .DS_Store
+
+# keep docs/ tracked for GitHub Pages
+!docs

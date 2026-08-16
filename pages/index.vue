@@ -99,7 +99,7 @@ useHead(() => ({
             content: `Explore the ${activeTheme.value.name} design system — a production-ready, fully responsive web UI theme with a detailed AI build prompt.`,
         },
         { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: `https://design-prompt.example.com/?theme=${activeTheme.value.id}` },
+        { property: 'og:url', content: `https://design.its-ash.in/?theme=${activeTheme.value.id}` },
         { property: 'og:image', content: '/og-image.svg' },
         { property: 'twitter:card', content: 'summary_large_image' },
         { property: 'twitter:title', content: `${activeTheme.value.name} Theme · Design Prompt` },
@@ -109,14 +109,14 @@ useHead(() => ({
         },
     ],
     link: [
-        { rel: 'canonical', href: `https://design-prompt.example.com/?theme=${activeTheme.value.id}` },
+        { rel: 'canonical', href: `https://design.its-ash.in/?theme=${activeTheme.value.id}` },
     ],
 }));
 
 const structuredThemes = THEMES.map((t) => ({
     '@type': 'CreativeWork',
     name: `${t.name} Design System`,
-    url: `https://design-prompt.example.com/?theme=${t.id}`,
+    url: `https://design.its-ash.in/?theme=${t.id}`,
     description: `${t.name} web UI design system with AI build prompt.`,
 }));
 
@@ -128,11 +128,11 @@ useHead({
                 '@context': 'https://schema.org',
                 '@type': 'WebSite',
                 name: 'Design Prompt',
-                url: 'https://design-prompt.example.com/',
+                url: 'https://design.its-ash.in/',
                 description: 'A curated gallery of 30 production-ready web UI design themes with AI design prompts.',
                 potentialAction: {
                     '@type': 'SearchAction',
-                    target: 'https://design-prompt.example.com/?theme={theme_id}',
+                    target: 'https://design.its-ash.in/?theme={theme_id}',
                     'query-input': 'required name=theme_id',
                 },
             }),

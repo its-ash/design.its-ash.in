@@ -8,6 +8,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "deploy": "nuxt generate && cp docs/CNAME .cname-backup 2>/dev/null; rimraf docs && cp -r .output/public docs && cp .cname-backup docs/CNAME 2>/dev/null; rm -f .cname-backup",
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
@@ -19,6 +20,7 @@
     "vue-router": "^4.4.0"
   },
   "dependencies": {
-    "marked": "^13.0.0"
+    "marked": "^13.0.0",
+    "rimraf": "^5.0.0"
   }
 }
