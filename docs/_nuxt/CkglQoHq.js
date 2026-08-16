@@ -1,1 +1,0 @@
-import{_ as t,f as s,g as n,z as c}from"./fSUShXB5.js";const o={},r={class:"min-h-screen text-ink-100"};function a(e,_){return s(),n("div",r,[c(e.$slots,"default")])}const l=t(o,[["render",a]]);export{l as default};

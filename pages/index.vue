@@ -39,6 +39,28 @@ const fullIframeUrl = computed(() => {
     return `https://design.its-ash.in${activeTheme.value.previewPath}`;
 });
 
+const thumbObserver = ref<IntersectionObserver | null>(null);
+const visibleThumbs = ref(new Set<string>());
+
+function initThumbObserver() {
+    if (!import.meta.client) return;
+    thumbObserver.value = new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+            const id = (entry.target as HTMLElement).dataset.thumbId;
+            if (!id) continue;
+            if (entry.isIntersecting) {
+                visibleThumbs.value.add(id);
+            }
+        }
+    }, { rootMargin: '200px' });
+}
+
+function observeThumb(el: HTMLElement, id: string) {
+    if (!el || !thumbObserver.value) return;
+    el.dataset.thumbId = id;
+    thumbObserver.value.observe(el);
+}
+
 watch(activeThemeId, (id) => {
     if (route.query.theme !== id) {
         router.replace({ query: { ...route.query, theme: id } });
@@ -53,9 +75,13 @@ onMounted(() => {
         router.replace({ query: { ...route.query, theme: activeThemeId.value } });
     }
     checkMobile();
+    initThumbObserver();
     window.addEventListener('resize', checkMobile);
 });
-onBeforeUnmount(() => window.removeEventListener('resize', checkMobile));
+onBeforeUnmount(() => {
+    window.removeEventListener('resize', checkMobile);
+    thumbObserver.value?.disconnect();
+});
 
 async function loadPrompt(theme: ThemeInfo) {
     promptOpen.value = true;
@@ -257,8 +283,12 @@ useHead({
                         :aria-current="theme.id === activeThemeId ? 'true' : 'false'"
                         @click="selectTheme(theme.id)"
                     >
-                        <div class="relative aspect-[16/10] w-full overflow-hidden bg-ink-950 pointer-events-none">
+                        <div
+                            :ref="(el) => observeThumb(el as HTMLElement, theme.id)"
+                            class="relative aspect-[16/10] w-full overflow-hidden bg-ink-950 pointer-events-none"
+                        >
                             <iframe
+                                v-if="visibleThumbs.has(theme.id)"
                                 :src="theme.previewPath"
                                 :title="`${theme.name} thumbnail`"
                                 class="pointer-events-none absolute left-0 top-0 origin-top-left border-0"
@@ -295,10 +325,15 @@ useHead({
                 <div class="flex items-center justify-between gap-2 border-b border-[#1f1f1f] bg-[#111111] px-4 py-2.5">
                     <div class="min-w-0">
                         <h2 class="truncate text-sm font-semibold text-white">{{ activeTheme.name }}</h2>
-                        <a :href="fullIframeUrl" target="_blank" rel="noopener noreferrer"
-                            class="truncate text-xs text-ink-400 font-mono hover:underline hover:text-[#e6c558] transition block">
-                            {{ fullIframeUrl }}
-                        </a>
+                        <ClientOnly>
+                            <a :href="fullIframeUrl" target="_blank" rel="noopener noreferrer"
+                                class="truncate text-xs text-ink-400 font-mono hover:underline hover:text-[#e6c558] transition block">
+                                {{ fullIframeUrl }}
+                            </a>
+                            <template #fallback>
+                                <span class="truncate text-xs text-ink-400 font-mono block">{{ iframeSrc }}</span>
+                            </template>
+                        </ClientOnly>
                     </div>
                     <button class="btn-ghost" @click="reloadIframe" aria-label="Reload preview">
                         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"

@@ -1,128 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/__sitemap__/style.xsl"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <lastmod>2026-08-16T16:58:08Z</lastmod>
+        <lastmod>2026-08-16T17:04:31Z</lastmod>
         <loc>https://design.its-ash.in/</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=academia</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=art-deco</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=bauhaus</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=botanical</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=business</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=clay</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=corporate</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=crypto</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=cyberpunk</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=dark</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=flat-design</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=geometric</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=industrial</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=kinetic</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=luxury</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=material</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=maximalism</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=modern-dark</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=monochrome</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=neo-brutalism</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=neumorphism</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=newsprint</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=organic</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=retro</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=sketch</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=swiss</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=tech</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=terminal</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=typography</loc>
     </url>
     <url>
-        <lastmod>2026-08-16T17:02:15Z</lastmod>
+        <lastmod>2026-08-16T17:05:01Z</lastmod>
         <loc>https://design.its-ash.in/?theme=vaporwave</loc>
     </url>
 </urlset>
-<!-- XML Sitemap generated by @nuxtjs/sitemap v6.1.5 at 2026-08-16T17:02:28.640Z -->
+<!-- XML Sitemap generated by @nuxtjs/sitemap v6.1.5 at 2026-08-16T17:05:10.080Z -->

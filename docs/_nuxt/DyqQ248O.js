@@ -1,0 +1,1 @@
+import{_ as t,m as s,e as n,I as c}from"./DzQmie1u.js";const o={},r={class:"min-h-screen text-ink-100"};function a(e,_){return s(),n("div",r,[c(e.$slots,"default")])}const d=t(o,[["render",a]]);export{d as default};
