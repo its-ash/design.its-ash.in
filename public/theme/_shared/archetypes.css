@@ -59,3 +59,6 @@
 @media (max-width: 560px) {
   .arch-grid--2, .arch-grid--4 { grid-template-columns: 1fr; }
 }
+
+/* Dimmed supporting text (theme-neutral: inherits the theme's text color) */
+.arch-muted { opacity: 0.72; font-size: 0.92em; }

@@ -64,12 +64,20 @@ for (const theme of themes) {
     const navbar = extract(html, /<header[^>]*class="[^"]*navbar/i, '</header>', 'navbar', theme);
     const tailRaw = extract(html, /<footer[^>]*class="[^"]*footer/i, '</body>', 'footer..</body>', theme);
 
+    // Match the theme's Material Symbols variant: the body templates are written
+    // with `material-symbols-outlined`; themes like Neumorphism or Tech use the
+    // Rounded variant (different CSS class AND different Google font stylesheet).
+    const iconClass = html.match(/material-symbols-(outlined|rounded|sharp)/)?.[0] ?? 'material-symbols-outlined';
+    const iconFamily = 'Material+Symbols+' + iconClass.split('-')[2].replace(/^./, (c) => c.toUpperCase());
+    const iconLink = `<link href="https://fonts.googleapis.com/css2?family=${iconFamily}:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">`;
+
     for (const type of TYPES) {
       const head = headRaw
         .replace(/<title>[^<]*<\/title>/i, `<title>${type.title} — ${theme} Theme</title>`)
         .replace(/(href=")(style\.css")/g, '$1../$2')
-        .replace('</head>', '<link rel="stylesheet" href="/theme/_shared/archetypes.css">\n<link rel="icon" type="image/svg+xml" href="/favicon.svg">\n</head>');
+        .replace('</head>', (headRaw.includes(iconFamily) ? '' : iconLink + '\n') + '<link rel="stylesheet" href="/theme/_shared/archetypes.css">\n<link rel="icon" type="image/svg+xml" href="/favicon.svg">\n</head>');
       const tail = tailRaw.replace(/(src=")(script\.js")/g, '$1../$2');
+      const body = templates[type.dir].trim().replaceAll('material-symbols-outlined', iconClass);
       const page = `<!DOCTYPE html>
 <html lang="en">
 ${head}
@@ -77,7 +85,7 @@ ${bodyTag}
 
 ${navbar}
 
-${templates[type.dir].trim()}
+${body}
 
 ${tail}
 </html>
