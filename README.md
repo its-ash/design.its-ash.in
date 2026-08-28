@@ -8,6 +8,7 @@ Live demo: **<https://design.its-ash.in>**
 
 - **Card sidebar** — each theme appears as a live thumbnail card (scaled-down iframe preview) with its name; clicking loads the full interactive preview in the right pane.
 - **Live iframe preview** — the selected theme's `index.html` renders in a sandboxed iframe on the right with a reload control.
+- **Website-type dropdown** — the preview toolbar has a type selector (Content, Marketing, Commerce, Community, Web App, Specialized); every theme renders each archetype, and both the main preview and the sidebar thumbnails follow the selected type (synced to `?type=` in the URL).
 - **Prompt viewer** — the top-bar **Prompt** button fetches the selected theme's markdown prompt from `/prompts/main/<Theme>.md`, renders it, and offers a **copy-to-clipboard** button.
 - **Black + gold dark theme** — modern glassmorphism UI with 8px border radius globally.
 - **Full SEO support**
@@ -23,11 +24,15 @@ Live demo: **<https://design.its-ash.in>**
 
 ```
 public/
-  theme/        # 30 theme folders (Academia, Cyberpunk, …) each with index.html / style.css / script.js
-  prompts/main/ # 30 matching design prompt markdown files
+  theme/              # 30 theme folders (Academia, Cyberpunk, …) each with index.html / style.css / script.js
+    <Name>/<type>/    # generated archetype pages: content, commerce, community, apps, specialized
+  prompts/main/       # 30 matching design prompt markdown files
+  prompts/archetypes/ # the archetype content specs + markup contract
 ```
 
-The left sidebar lists every folder under `public/theme/`. Clicking a theme loads `/theme/<Name>/index.html` in the right-pane iframe.
+The left sidebar lists every folder under `public/theme/`. Clicking a theme loads `/theme/<Name>/index.html` (or `/theme/<Name>/<type>/index.html` for a non-marketing website type) in the right-pane iframe.
+
+The root `index.html` of each theme is the hand-authored **marketing** archetype. The five other archetype pages are assembled by `npm run archetypes` from shared body templates in `scripts/archetypes/`, wrapped in each theme's own extracted head, navbar, footer, popups, and `script.js` — see `public/prompts/archetypes/README.md` for the markup contract.
 
 ## Scripts
 
@@ -36,6 +41,7 @@ npm install      # install dependencies
 npm run dev      # dev server at http://localhost:3000
 npm run build    # production build → .output/
 npm run generate # static site → .output/public/
+npm run archetypes # regenerate the per-type preview pages under public/theme/
 npm run preview  # preview the production build
 npm run deploy   # generate static site into docs/ (commit & push to deploy)
 ```

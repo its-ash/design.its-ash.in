@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexus Trust — base Theme</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/theme/_shared/archetypes.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body data-theme="dark">
+
+<header class="navbar" id="navbar">
+  <nav class="nav-container">
+    <a href="#hero" class="logo">⬡ Nexus</a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
+    <label for="nav-toggle" class="nav-burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#slider">Showcase</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn btn-ghost" onclick="openPopup('loginPopup')">Login</button>
+      <button class="btn btn-primary" onclick="openPopup('signupPopup')">Get Started</button>
+      <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle theme">🌓</button>
+    </div>
+  </nav>
+</header>
+
+<!-- ========== SPLIT HERO: COPY + ONLINE BANKING CARD ========== -->
+<section class="container arch-top" id="hero">
+  <div class="arch-split arch-split--wide-left">
+    <div class="arch-left">
+      <span class="badge">🏛 Chartered · Member-Owned · Est. 1904</span>
+      <h1 class="hero-title arch-headline--article arch-left">Banking That Answers to You</h1>
+      <p class="hero-subtitle arch-left">Nexus Trust is a full-service digital bank — accounts, lending, and wealth tools — built on a century of fiduciary duty and audited twice a year.</p>
+      <div class="arch-meta">
+        <span>🛡 Deposits insured to $250,000</span>
+        <span>ISO 27001 certified</span>
+        <span>Public audit reports</span>
+      </div>
+    </div>
+    <div class="card arch-card-pad">
+      <h3>Online Banking</h3>
+      <p class="muted">Sign in to view balances, move money, and manage cards.</p>
+      <div class="arch-stack arch-stack--tight">
+        <button class="btn btn-primary btn-block" onclick="openPopup('loginPopup')">Sign In</button>
+        <button class="btn btn-outline btn-block" onclick="openPopup('signupPopup')">Open an Account</button>
+        <button class="btn btn-ghost btn-block" onclick="showToast('A recovery link has been sent to your email')">Forgot credentials?</button>
+      </div>
+      <hr class="arch-divider">
+      <p class="arch-fineprint">Protected by biometric verification and end-to-end encryption. Never share your one-time codes — Nexus Trust staff will never ask for them.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== RATES: TABLE + FEATURED APY ========== -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-header">
+      <h2>Today's Rates</h2>
+      <p>Updated every business day at 08:00. No teaser rates, no asterisks.</p>
+    </div>
+    <div class="arch-split arch-split--flip">
+      <div class="table-wrapper">
+        <table class="table">
+          <thead>
+            <tr><th>Product</th><th>Rate (APR)</th><th>Term</th><th>Minimum</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Instant Savings</td><td>4.10%</td><td>None</td><td>$1</td><td><span class="tag tag-success">Available</span></td></tr>
+            <tr><td>Fixed Deposit</td><td>4.85%</td><td>12 months</td><td>$500</td><td><span class="tag tag-success">Available</span></td></tr>
+            <tr><td>Mortgage (Fixed)</td><td>5.24%</td><td>5 years</td><td>10% down</td><td><span class="tag tag-success">Available</span></td></tr>
+            <tr><td>Personal Loan</td><td>7.90%</td><td>1–7 years</td><td>$1,000</td><td><span class="tag tag-warning">By Approval</span></td></tr>
+            <tr><td>Business Credit Line</td><td>8.75%</td><td>Revolving</td><td>$5,000</td><td><span class="tag tag-warning">By Approval</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card arch-card-pad">
+        <span class="arch-kicker">Featured Rate</span>
+        <h3>12-Month Fixed Deposit</h3>
+        <div class="price">4.85<span class="period">% APY</span></div>
+        <p class="muted">Lock in today's rate from $500. Interest paid monthly, principal insured, withdraw at term with zero fees.</p>
+        <button class="btn btn-primary btn-block" onclick="openPopup('signupPopup')">Open a Fixed Deposit</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SERVICES ZIGZAG ========== -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <h2>What We Do</h2>
+      <p>Three lines of business, one login, zero branches required.</p>
+    </div>
+    <div class="arch-stack">
+      <div class="arch-split">
+        <div class="arch-prose">
+          <span class="arch-kicker">Personal</span>
+          <h3>Everyday Banking</h3>
+          <p>Checking and savings with no monthly fees, same-day transfers, and cards you can freeze from any browser in under a minute. Family sub-accounts included on every tier.</p>
+          <button class="btn btn-outline" onclick="showToast('Everyday banking details opened')">Explore Accounts</button>
+        </div>
+        <div class="card arch-card-pad">
+          <span class="material-symbols-outlined">account_balance</span>
+          <div class="arch-meta"><span>No monthly fees</span><span>Same-day transfers</span><span>Instant card freeze</span></div>
+        </div>
+      </div>
+      <div class="arch-split arch-split--flip">
+        <div class="arch-prose">
+          <span class="arch-kicker">Lending</span>
+          <h3>Mortgages &amp; Loans</h3>
+          <p>Fixed and tracker mortgages with a decision in principle inside 24 hours, and personal loans priced off your record with us — not a bureau's guess about you.</p>
+          <button class="btn btn-outline" onclick="showToast('Lending rates and criteria opened')">See Lending Criteria</button>
+        </div>
+        <div class="card arch-card-pad">
+          <span class="material-symbols-outlined">home</span>
+          <div class="arch-meta"><span>Decision in 24h</span><span>No arrangement fees</span><span>Overpay anytime</span></div>
+        </div>
+      </div>
+      <div class="arch-split">
+        <div class="arch-prose">
+          <span class="arch-kicker">Wealth</span>
+          <h3>Wealth &amp; Pensions</h3>
+          <p>Managed portfolios and self-invested pensions with capped fees and plain-language reporting. Your advisor is a fiduciary — paid by you, never by commission.</p>
+          <button class="btn btn-outline" onclick="showToast('Wealth management overview opened')">Meet the Advisors</button>
+        </div>
+        <div class="card arch-card-pad">
+          <span class="material-symbols-outlined">trending_up</span>
+          <div class="arch-meta"><span>Fee-capped</span><span>Fiduciary advice</span><span>Segregated custody</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== APPLICATION TIMELINE ========== -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Opening an Account</h2>
+      <p>From application to first payment, most members finish in a day.</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><span class="timeline-date">Minute 0</span><h3>Apply</h3><p>Ten questions. No paperwork, no branch.</p></div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><span class="timeline-date">Minute 5</span><h3>Verify Identity</h3><p>Photo ID plus a selfie — checked in seconds.</p></div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><span class="timeline-date">Hour 1</span><h3>Approval</h3><p>Compliance review, usually automated.</p></div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><span class="timeline-date">Day 1</span><h3>Card &amp; Banking Live</h3><p>Virtual card instantly; physical card in 3 days.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== INSIDE THE APP (SLIDER) ========== -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <h2>Inside the App</h2>
+      <p>Five screens that replaced the branch visit.</p>
+    </div>
+    <div class="slider" id="slider">
+      <div class="slider-track" id="sliderTrack">
+        <div class="slide slide-i"><h3>One-Glance Home</h3><p>Balances, upcoming bills, spending pulse</p></div>
+        <div class="slide slide-ii"><h3>Instant Card Controls</h3><p>Freeze, limit, or replace in two taps</p></div>
+        <div class="slide slide-iii"><h3>Payments &amp; Splits</h3><p>Pay anyone, split anything, settle instantly</p></div>
+        <div class="slide slide-iv"><h3>Wealth View</h3><p>Portfolio, pension, and property in one chart</p></div>
+        <div class="slide slide-v"><h3>Vault</h3><p>Statements and documents, sealed and searchable</p></div>
+      </div>
+      <button class="slider-btn slider-prev" onclick="moveSlider(-1)" aria-label="Previous slide">❮</button>
+      <button class="slider-btn slider-next" onclick="moveSlider(1)" aria-label="Next slide">❯</button>
+      <div class="slider-dots" id="sliderDots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SECURITY & REGULATION FAQ ========== -->
+<section class="section">
+  <div class="container container-narrow">
+    <div class="section-header">
+      <h2>Security &amp; Regulation</h2>
+      <p>The questions our compliance team loves to answer.</p>
+    </div>
+    <div class="accordion">
+      <details class="accordion-item" open>
+        <summary>Is my money insured?</summary>
+        <p>Yes — deposits are insured up to $250,000 per depositor under the national scheme, and client investments are held in segregated custody.</p>
+      </details>
+      <details class="accordion-item">
+        <summary>Who regulates Nexus Trust?</summary>
+        <p>We hold a full banking charter and are supervised by the national banking authority, with public audit reports filed twice a year.</p>
+      </details>
+      <details class="accordion-item">
+        <summary>How is my data protected?</summary>
+        <p>End-to-end encryption in transit and at rest, biometric authentication, and no sale of customer data — ever, to anyone.</p>
+      </details>
+      <details class="accordion-item">
+        <summary>What happens if I lose my phone?</summary>
+        <p>Freeze everything from any browser in under a minute, then restore access with in-app identity re-verification.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ========== BOOK AN APPOINTMENT ========== -->
+<section class="section section-alt" id="contact">
+  <div class="container container-narrow">
+    <div class="section-header">
+      <h2>Book an Appointment</h2>
+      <p>Video or phone, with a licensed advisor — not a chatbot.</p>
+    </div>
+    <form id="contactForm" class="form-card" novalidate>
+      <div class="form-group">
+        <label for="cName">Full Name <span class="req">*</span></label>
+        <input type="text" id="cName" name="name" placeholder="Jordan Reyes" required>
+        <small class="error-msg" id="errName"></small>
+      </div>
+      <div class="form-group">
+        <label for="cEmail">Email <span class="req">*</span></label>
+        <input type="email" id="cEmail" name="email" placeholder="you@example.com" required>
+        <small class="error-msg" id="errEmail"></small>
+      </div>
+      <div class="form-group">
+        <label for="cPhone">Phone</label>
+        <input type="tel" id="cPhone" name="phone" placeholder="+1 (555) 000-0000">
+        <small class="error-msg" id="errPhone"></small>
+      </div>
+      <div class="form-group">
+        <label for="cSubject">Department <span class="req">*</span></label>
+        <select id="cSubject" name="subject" required>
+          <option value="">-- Choose --</option>
+          <option>Everyday banking</option>
+          <option>Mortgages &amp; lending</option>
+          <option>Wealth &amp; pensions</option>
+          <option>Business banking</option>
+        </select>
+        <small class="error-msg" id="errSubject"></small>
+      </div>
+      <div class="form-group">
+        <label for="cMessage">What Would You Like to Discuss? <span class="req">*</span></label>
+        <textarea id="cMessage" name="message" rows="5" placeholder="A sentence or two is plenty..." required minlength="10"></textarea>
+        <small class="error-msg" id="errMessage"></small>
+      </div>
+      <div class="form-group">
+        <label class="checkbox"><input type="checkbox" id="cTerms" required> I consent to being contacted about my inquiry <span class="req">*</span></label>
+        <small class="error-msg" id="errTerms"></small>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Request Appointment</button>
+      <div class="form-success" id="formSuccess" hidden>✅ Request received — an advisor will confirm within one business day.</div>
+    </form>
+  </div>
+</section>
+
+<!-- ========== FINE PRINT ========== -->
+<section class="container">
+  <p class="arch-fineprint">Nexus Trust Bank, N.A. Member of the national deposit insurance scheme. Deposits insured up to $250,000 per depositor, per ownership category. Investment products are not deposits, are not insured, and may lose value. Rates shown are annual percentage rates or yields as of today's date and are subject to change without notice. Lending is subject to status and affordability checks. Nexus Trust and the Nexus Trust mark are registered trademarks. If this were a real bank, this paragraph would be even longer.</p>
+  <hr class="arch-divider">
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>⬡ Nexus</h4>
+        <p>Building the future, one element at a time.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Twitter">𝕏</a>
+          <a href="#" aria-label="GitHub">⌥</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul><li><a href="#">Features</a></li><li><a href="#">Pricing</a></li><li><a href="#">Docs</a></li><li><a href="#">Changelog</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul><li><a href="#">About</a></li><li><a href="#">Blog</a></li><li><a href="#">Careers</a></li><li><a href="#">Contact</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li><li><a href="#">Cookies</a></li><li><a href="#">Licenses</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Nexus. All rights reserved.</p>
+      <p>Made with ❤️ using semantic HTML</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== POPUP: LOGIN ========== -->
+<div class="popup-overlay" id="loginPopup">
+  <div class="popup">
+    <button class="popup-close" onclick="closePopup('loginPopup')" aria-label="Close">×</button>
+    <h2>Welcome Back</h2>
+    <p>Sign in to your account</p>
+    <form onsubmit="event.preventDefault(); closePopup('loginPopup'); showToast('Logged in successfully!')" novalidate>
+      <div class="form-group">
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="loginPass">Password</label>
+        <input type="password" id="loginPass" placeholder="••••••••" required>
+      </div>
+      <div class="form-group">
+        <label class="checkbox"><input type="checkbox"> Remember me</label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+      <p class="popup-footer">No account? <a href="#" onclick="closePopup('loginPopup'); openPopup('signupPopup')">Sign up</a></p>
+    </form>
+  </div>
+</div>
+
+<!-- ========== POPUP: SIGNUP ========== -->
+<div class="popup-overlay" id="signupPopup">
+  <div class="popup">
+    <button class="popup-close" onclick="closePopup('signupPopup')" aria-label="Close">×</button>
+    <h2>Create Account</h2>
+    <p>Start your free trial today</p>
+    <form onsubmit="event.preventDefault(); closePopup('signupPopup'); showToast('Account created!')" novalidate>
+      <div class="form-group">
+        <label for="suName">Full Name</label>
+        <input type="text" id="suName" placeholder="John Doe" required>
+      </div>
+      <div class="form-group">
+        <label for="suEmail">Email</label>
+        <input type="email" id="suEmail" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="suPass">Password</label>
+        <input type="password" id="suPass" placeholder="••••••••" required minlength="6">
+        <small>Password must be at least 6 characters</small>
+      </div>
+      <div class="form-group">
+        <label class="checkbox"><input type="checkbox" required> I accept the <a href="#">Terms</a></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+      <p class="popup-footer">Have an account? <a href="#" onclick="closePopup('signupPopup'); openPopup('loginPopup')">Sign in</a></p>
+    </form>
+  </div>
+</div>
+
+<!-- ========== POPUP: VIDEO ========== -->
+<div class="popup-overlay" id="videoPopup">
+  <div class="popup popup-video">
+    <button class="popup-close" onclick="closePopup('videoPopup')" aria-label="Close">×</button>
+    <h2>Product Demo</h2>
+    <div class="video-placeholder">
+      <button class="play-btn" onclick="this.parentElement.innerHTML='<iframe width=100% height=100% src=https://www.youtube.com/embed/dQw4w9WgXcQ frameborder=0 allowfullscreen></iframe>'">▶</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== TOAST ========== -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ========== BACK TO TOP ========== -->
+<button class="back-to-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+<script src="../script.js"></script>
+</body>
+</html>

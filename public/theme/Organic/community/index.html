@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexus Community — Organic Theme</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="/theme/_shared/archetypes.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body data-theme="light">
+
+<header class="navbar" id="navbar">
+  <nav class="nav-container">
+    <a href="#hero" class="logo"><span class="material-symbols-outlined logo__icon">eco</span> Nexus</a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
+    <label for="nav-toggle" class="nav-burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#slider">Showcase</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn btn-ghost" onclick="openPopup('loginPopup')">Login</button>
+      <button class="btn btn-primary" onclick="openPopup('signupPopup')">Get Started</button>
+      <button class="theme-toggle material-symbols-outlined" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle theme" aria-pressed="false">dark_mode</button>
+    </div>
+  </nav>
+</header>
+
+<!-- ========== FORUM BAR ========== -->
+<section class="container arch-top" id="hero">
+  <div class="arch-row arch-row--between arch-row--wrap">
+    <div>
+      <h1 class="hero-title arch-headline--article arch-left">The Forum</h1>
+      <div class="arch-meta">
+        <span>● 214 members online</span>
+        <span>318 posts today</span>
+        <span>12,500 topics</span>
+      </div>
+    </div>
+    <div class="arch-row">
+      <button class="btn btn-ghost" onclick="showToast('Search coming to the demo soon')">Search</button>
+      <button class="btn btn-primary" onclick="openPopup('signupPopup')">+ New Thread</button>
+    </div>
+  </div>
+  <hr class="arch-divider">
+</section>
+
+<!-- ========== THREAD FEED + COMMUNITY SIDEBAR ========== -->
+<section class="container" id="features">
+  <div class="arch-main-aside">
+    <div class="arch-stack arch-stack--tight">
+      <div class="arch-row arch-row--wrap">
+        <span class="tag tag-primary">All</span>
+        <span class="tag tag-info">Show &amp; Tell</span>
+        <span class="tag tag-success">Q&amp;A</span>
+        <span class="tag tag-warning">Reviews</span>
+        <span class="tag tag-error">Meta</span>
+      </div>
+
+      <div class="card arch-card-pad arch-row arch-row--top">
+        <span class="arch-avatar">AL</span>
+        <div class="arch-prose">
+          <strong>📌 Community call is Thursday — drop your questions here</strong>
+          <div class="arch-meta"><span>ada_l</span><span>Meta</span><span>41 replies · 2.1k views</span><span>last reply 12m ago</span></div>
+        </div>
+        <span class="tag tag-warning">Pinned</span>
+      </div>
+      <div class="card arch-card-pad arch-row arch-row--top">
+        <span class="arch-avatar">SK</span>
+        <div class="arch-prose">
+          <strong>Debugging war stories — the bug took three weeks, the fix was one character</strong>
+          <div class="arch-meta"><span>samir_k</span><span>Show &amp; Tell</span><span>212 replies · 9.4k views</span><span>last reply 4m ago</span></div>
+        </div>
+        <span class="tag tag-error">Hot</span>
+      </div>
+      <div class="card arch-card-pad arch-row arch-row--top">
+        <span class="arch-avatar">GH</span>
+        <div class="arch-prose">
+          <strong>How do you scale past 10k concurrent users without going broke?</strong>
+          <div class="arch-meta"><span>grace_h</span><span>Q&amp;A</span><span>43 replies · 3.8k views</span><span>last reply 26m ago</span></div>
+        </div>
+        <span class="tag tag-success">Answered</span>
+      </div>
+      <div class="card arch-card-pad arch-row arch-row--top">
+        <span class="arch-avatar">JM</span>
+        <div class="arch-prose">
+          <strong>Review: six months on the new framework, with before/after numbers</strong>
+          <div class="arch-meta"><span>jules_m</span><span>Reviews</span><span>89 replies · 5.2k views</span><span>last reply 1h ago</span></div>
+        </div>
+        <span class="tag tag-warning">Review</span>
+      </div>
+      <div class="card arch-card-pad arch-row arch-row--top">
+        <span class="arch-avatar">DR</span>
+        <div class="arch-prose">
+          <strong>Show &amp; Tell: my accessibility audit toolkit is now open source</strong>
+          <div class="arch-meta"><span>dana_r</span><span>Show &amp; Tell</span><span>67 replies · 4.1k views</span><span>last reply 2h ago</span></div>
+        </div>
+        <span class="tag tag-info">Show &amp; Tell</span>
+      </div>
+      <div class="card arch-card-pad arch-row arch-row--top">
+        <span class="arch-avatar">LB</span>
+        <div class="arch-prose">
+          <strong>Anyone benchmarked the new image format on real traffic yet?</strong>
+          <div class="arch-meta"><span>linus_b</span><span>Q&amp;A</span><span>0 replies · 340 views</span><span>posted 38m ago</span></div>
+        </div>
+        <span class="tag tag-primary">Unanswered</span>
+      </div>
+      <div class="card arch-card-pad arch-row arch-row--top">
+        <span class="arch-avatar">MH</span>
+        <div class="arch-prose">
+          <strong>Mentorship match, round 12 — mentors and mentees introduce yourselves</strong>
+          <div class="arch-meta"><span>margaret_h</span><span>Meta</span><span>56 replies · 2.9k views</span><span>last reply 3h ago</span></div>
+        </div>
+        <span class="tag tag-success">Open</span>
+      </div>
+      <button class="btn btn-outline btn-block" onclick="showToast('Loading older threads...')">Load More Threads</button>
+    </div>
+
+    <aside class="arch-aside">
+      <div class="card arch-card-pad">
+        <h3>Online Now</h3>
+        <div class="arch-row arch-row--wrap">
+          <span class="arch-avatar">AL</span>
+          <span class="arch-avatar">GH</span>
+          <span class="arch-avatar">SK</span>
+          <span class="arch-avatar">JM</span>
+          <span class="arch-avatar">DR</span>
+          <span class="arch-avatar">+209</span>
+        </div>
+      </div>
+      <div class="card arch-card-pad">
+        <h3>Today's Poll</h3>
+        <p class="muted">Tabs or spaces — final answer?</p>
+        <div class="radio-group">
+          <label class="radio"><input type="radio" name="poll" checked> Tabs</label>
+          <label class="radio"><input type="radio" name="poll"> Spaces</label>
+          <label class="radio"><input type="radio" name="poll"> The formatter decides</label>
+        </div>
+        <button class="btn btn-outline btn-block" onclick="showToast('Vote recorded — results update hourly')">Vote</button>
+        <div class="progress-group">
+          <div class="progress-item">
+            <label>Tabs <span>22%</span></label>
+            <div class="progress"><div class="progress-bar" style="width:22%"></div></div>
+          </div>
+          <div class="progress-item">
+            <label>Spaces <span>31%</span></label>
+            <div class="progress"><div class="progress-bar" style="width:31%"></div></div>
+          </div>
+          <div class="progress-item">
+            <label>The formatter decides <span>47%</span></label>
+            <div class="progress"><div class="progress-bar" style="width:47%"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="card arch-card-pad">
+        <h3>Top Contributors</h3>
+        <ol class="arch-prose">
+          <li>ada_l — 12,440 rep</li>
+          <li>grace_h — 10,208 rep</li>
+          <li>linus_b — 8,930 rep</li>
+          <li>margaret_h — 7,415 rep</li>
+          <li>katherine_j — 6,102 rep</li>
+        </ol>
+      </div>
+      <div class="card arch-card-pad">
+        <h3>House Rules</h3>
+        <p class="muted">Be generous with knowledge. Critique work, not people. Disclose affiliations. Search before posting.</p>
+        <button class="btn btn-ghost btn-block" onclick="showToast('Full guidelines open in the wiki')">Read the Guidelines</button>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ========== Q&A SPOTLIGHT ========== -->
+<section class="section section-alt">
+  <div class="container container-narrow">
+    <div class="section-header">
+      <h2>Q&amp;A Spotlight</h2>
+      <p>This week's best answer, as voted by the community.</p>
+    </div>
+    <div class="arch-stack">
+      <div class="card arch-card-pad">
+        <div class="arch-row arch-row--top">
+          <span class="arch-avatar">GH</span>
+          <div>
+            <strong>How do you scale past 10k concurrent users without going broke?</strong>
+            <div class="arch-meta"><span>asked by grace_h</span><span>2 days ago</span><span>▲ 148 votes</span></div>
+            <p class="muted">We're hitting connection limits nightly. Vertical scaling doubled our bill and bought us three weeks. What actually works at this size?</p>
+          </div>
+        </div>
+      </div>
+      <div class="card arch-card-pad">
+        <div class="arch-row arch-row--top">
+          <span class="arch-avatar">AL</span>
+          <div>
+            <div class="arch-row arch-row--wrap">
+              <span class="tag tag-success">✓ Accepted Answer</span>
+              <span class="arch-meta"><span>ada_l</span><span>▲ 231 votes</span></span>
+            </div>
+            <blockquote>
+              <p>Three moves, in order of cost-effectiveness: cache the top 20 queries (we measured 71% of load), move session state out of the app tier, then add read replicas. Do them in that order — most teams buy replicas first and wonder why the bill grew faster than the headroom. Full cost math in the thread.</p>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+      <div class="card arch-card-pad">
+        <div class="arch-row arch-row--top">
+          <span class="arch-avatar">LB</span>
+          <div>
+            <div class="arch-meta"><span>linus_b</span><span>▲ 96 votes</span></div>
+            <p class="muted">Adding to ada's answer: profile before caching. Our "top queries" intuition was wrong in four of five cases.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== COMMUNITY HIGHLIGHTS (SLIDER) ========== -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Community Highlights</h2>
+      <p>Moments worth framing from the last year.</p>
+    </div>
+    <div class="slider" id="slider">
+      <div class="slider-track" id="sliderTrack">
+        <div class="slide slide-i"><h3>Hackathon Winners</h3><p>48 hours, 312 teams, one unforgettable demo</p></div>
+        <div class="slide slide-ii"><h3>The 300,000th Post</h3><p>A thank-you note that became a 400-reply thread</p></div>
+        <div class="slide slide-iii"><h3>Global Meetup Day</h3><p>41 cities, one community, same day</p></div>
+        <div class="slide slide-iv"><h3>Open Source Drive</h3><p>Members closed 1,200 issues in a weekend</p></div>
+        <div class="slide slide-v"><h3>Mentor of the Year</h3><p>Voted by 2,000 mentees — congratulations, Ada</p></div>
+      </div>
+      <button class="slider-btn slider-prev" onclick="moveSlider(-1)" aria-label="Previous slide">❮</button>
+      <button class="slider-btn slider-next" onclick="moveSlider(1)" aria-label="Next slide">❯</button>
+      <div class="slider-dots" id="sliderDots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACT MODERATORS ========== -->
+<section class="section section-alt" id="contact">
+  <div class="container container-narrow">
+    <div class="section-header">
+      <h2>Ask the Moderators</h2>
+      <p>Account help, reports, and community-call questions.</p>
+    </div>
+    <form id="contactForm" class="form-card" novalidate>
+      <div class="form-group">
+        <label for="cName">Display Name <span class="req">*</span></label>
+        <input type="text" id="cName" name="name" placeholder="your_handle" required>
+        <small class="error-msg" id="errName"></small>
+      </div>
+      <div class="form-group">
+        <label for="cEmail">Email <span class="req">*</span></label>
+        <input type="email" id="cEmail" name="email" placeholder="you@example.com" required>
+        <small class="error-msg" id="errEmail"></small>
+      </div>
+      <div class="form-group">
+        <label for="cPhone">Phone</label>
+        <input type="tel" id="cPhone" name="phone" placeholder="Optional">
+        <small class="error-msg" id="errPhone"></small>
+      </div>
+      <div class="form-group">
+        <label for="cSubject">Category <span class="req">*</span></label>
+        <select id="cSubject" name="subject" required>
+          <option value="">-- Choose --</option>
+          <option>Account help</option>
+          <option>Report a post</option>
+          <option>Community call question</option>
+          <option>Moderation appeal</option>
+        </select>
+        <small class="error-msg" id="errSubject"></small>
+      </div>
+      <div class="form-group">
+        <label for="cMessage">Message <span class="req">*</span></label>
+        <textarea id="cMessage" name="message" rows="5" placeholder="Include thread links where relevant..." required minlength="10"></textarea>
+        <small class="error-msg" id="errMessage"></small>
+      </div>
+      <div class="form-group">
+        <label class="checkbox"><input type="checkbox" id="cTerms" required> I agree to be contacted <span class="req">*</span></label>
+        <small class="error-msg" id="errTerms"></small>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Send to Moderators</button>
+      <div class="form-success" id="formSuccess" hidden>✅ Thank you! Your message has been sent successfully.</div>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4><span class="material-symbols-outlined logo__icon">eco</span> Nexus</h4>
+        <p>Building the future, one element at a time.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Twitter"><span class="material-symbols-outlined">close</span></a>
+          <a href="#" aria-label="GitHub"><span class="material-symbols-outlined">code</span></a>
+          <a href="#" aria-label="LinkedIn"><span class="material-symbols-outlined">groups</span></a>
+          <a href="#" aria-label="YouTube"><span class="material-symbols-outlined">play_circle</span></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul><li><a href="#">Features</a></li><li><a href="#">Pricing</a></li><li><a href="#">Docs</a></li><li><a href="#">Changelog</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul><li><a href="#">About</a></li><li><a href="#">Blog</a></li><li><a href="#">Careers</a></li><li><a href="#">Contact</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li><li><a href="#">Cookies</a></li><li><a href="#">Licenses</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Nexus. All rights reserved.</p>
+      <p>Made with <span class="material-symbols-outlined footer__heart">favorite</span> using semantic HTML</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== POPUP: LOGIN ========== -->
+<div class="popup-overlay" id="loginPopup">
+  <div class="popup">
+    <button class="popup-close material-symbols-outlined" onclick="closePopup('loginPopup')" aria-label="Close">close</button>
+    <h2>Welcome Back</h2>
+    <p>Sign in to your account</p>
+    <form onsubmit="event.preventDefault(); closePopup('loginPopup'); showToast('Logged in successfully!')" novalidate>
+      <div class="form-group">
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="loginPass">Password</label>
+        <input type="password" id="loginPass" placeholder="••••••••" required>
+      </div>
+      <div class="form-group">
+        <label class="checkbox"><input type="checkbox"> Remember me</label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+      <p class="popup-footer">No account? <a href="#" onclick="closePopup('loginPopup'); openPopup('signupPopup')">Sign up</a></p>
+    </form>
+  </div>
+</div>
+
+<!-- ========== POPUP: SIGNUP ========== -->
+<div class="popup-overlay" id="signupPopup">
+  <div class="popup">
+    <button class="popup-close material-symbols-outlined" onclick="closePopup('signupPopup')" aria-label="Close">close</button>
+    <h2>Create Account</h2>
+    <p>Start your free trial today</p>
+    <form onsubmit="event.preventDefault(); closePopup('signupPopup'); showToast('Account created!')" novalidate>
+      <div class="form-group">
+        <label for="suName">Full Name</label>
+        <input type="text" id="suName" placeholder="John Doe" required>
+      </div>
+      <div class="form-group">
+        <label for="suEmail">Email</label>
+        <input type="email" id="suEmail" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="suPass">Password</label>
+        <input type="password" id="suPass" placeholder="••••••••" required minlength="6">
+        <small>Password must be at least 6 characters</small>
+      </div>
+      <div class="form-group">
+        <label class="checkbox"><input type="checkbox" required> I accept the <a href="#">Terms</a></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+      <p class="popup-footer">Have an account? <a href="#" onclick="closePopup('signupPopup'); openPopup('loginPopup')">Sign in</a></p>
+    </form>
+  </div>
+</div>
+
+<!-- ========== POPUP: VIDEO ========== -->
+<div class="popup-overlay" id="videoPopup">
+  <div class="popup popup-video">
+    <button class="popup-close material-symbols-outlined" onclick="closePopup('videoPopup')" aria-label="Close">close</button>
+    <h2>Product Demo</h2>
+    <div class="video-placeholder">
+      <button class="play-btn material-symbols-outlined" onclick="this.parentElement.innerHTML='<iframe width=100% height=100% src=https://www.youtube.com/embed/dQw4w9WgXcQ frameborder=0 allowfullscreen></iframe>'">play_arrow</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== TOAST ========== -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ========== BACK TO TOP ========== -->
+<button class="back-to-top material-symbols-outlined" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">arrow_upward</button>
+
+<script src="../script.js" defer></script>
+</body>
+</html>

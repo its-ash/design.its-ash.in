@@ -7,6 +7,7 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
+    "archetypes": "node scripts/generate-archetypes.mjs",
     "preview": "nuxt preview",
     "deploy": "nuxt generate && cp docs/CNAME .cname-backup 2>/dev/null; rimraf docs && cp -r .output/public docs && cp .cname-backup docs/CNAME 2>/dev/null; rm -f .cname-backup",
     "postinstall": "nuxt prepare"

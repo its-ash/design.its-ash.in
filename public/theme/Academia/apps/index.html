@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexus Console — Academia Theme</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+<link rel="stylesheet" href="/theme/_shared/archetypes.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body data-theme="dark">
+
+<header class="navbar" id="navbar">
+  <nav class="nav-container">
+    <a href="#hero" class="logo"><span class="ornate-mark">❧</span> Nexus</a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
+    <label for="nav-toggle" class="nav-burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#slider">Showcase</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn btn-ghost" onclick="openPopup('loginPopup')">Login</button>
+      <button class="btn btn-primary" onclick="openPopup('signupPopup')">Get Started</button>
+      <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle theme"><span class="material-symbols-outlined">dark_mode</span></button>
+    </div>
+  </nav>
+</header>
+
+<!-- ========== APP BAR ========== -->
+<section class="container arch-top" id="hero">
+  <div class="arch-meta">
+    <span>Acme Workspace</span>
+    <span>›</span>
+    <span>Production</span>
+    <span>›</span>
+    <span><strong>Overview</strong></span>
+  </div>
+  <div class="arch-row arch-row--between arch-row--wrap">
+    <div>
+      <h1 class="hero-title arch-headline--article arch-left">Overview</h1>
+      <div class="arch-meta"><span>All systems operational</span><span>Last deploy 09:22 — v2.14.1</span></div>
+    </div>
+    <div class="arch-row">
+      <button class="btn btn-ghost" onclick="showToast('Export queued — check your email')">Export</button>
+      <button class="btn btn-outline" onclick="openPopup('videoPopup')">▶ Tour</button>
+      <button class="btn btn-primary" onclick="showToast('New project created')">+ New Project</button>
+    </div>
+  </div>
+  <hr class="arch-divider">
+</section>
+
+<!-- ========== KPI TILES ========== -->
+<section class="container">
+  <div class="arch-grid arch-grid--4">
+    <div class="card arch-card-pad">
+      <div class="stat"><strong data-count="1824">0</strong><span>Active Users</span></div>
+      <span class="tag tag-success">▲ 6.2% this week</span>
+    </div>
+    <div class="card arch-card-pad">
+      <div class="stat"><strong data-count="96500">0</strong><span>API Calls Today</span></div>
+      <span class="tag tag-success">▲ 3.1% vs yesterday</span>
+    </div>
+    <div class="card arch-card-pad">
+      <div class="stat"><strong data-count="99">0</strong><span>Uptime, 30 Days</span></div>
+      <span class="tag tag-info">SLA met</span>
+    </div>
+    <div class="card arch-card-pad">
+      <div class="stat"><strong>42ms</strong><span>p50 Latency</span></div>
+      <span class="tag tag-success">▼ 3ms week over week</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== USAGE + ALERTS ========== -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="arch-grid arch-grid--2">
+      <div class="card arch-card-pad">
+        <div class="arch-row arch-row--between">
+          <h3>Resource Usage</h3>
+          <span class="arch-meta"><span>billing period ends in 9 days</span></span>
+        </div>
+        <div class="progress-group">
+          <div class="progress-item">
+            <label>API quota <span>64%</span></label>
+            <div class="progress"><div class="progress-bar" style="width:64%"></div></div>
+          </div>
+          <div class="progress-item">
+            <label>Storage <span>82%</span></label>
+            <div class="progress"><div class="progress-bar" style="width:82%"></div></div>
+          </div>
+          <div class="progress-item">
+            <label>Seats <span>38%</span></label>
+            <div class="progress"><div class="progress-bar" style="width:38%"></div></div>
+          </div>
+          <div class="progress-item">
+            <label>Build minutes <span>57%</span></label>
+            <div class="progress"><div class="progress-bar" style="width:57%"></div></div>
+          </div>
+        </div>
+        <button class="btn btn-outline btn-block" onclick="showToast('Usage report opened')">View Detailed Usage</button>
+      </div>
+      <div class="card arch-card-pad">
+        <div class="arch-row arch-row--between">
+          <h3>Alerts</h3>
+          <span class="tag tag-warning">3 open</span>
+        </div>
+        <div class="arch-stack arch-stack--tight">
+          <div class="alert alert-warning">⚠️ <strong>Storage:</strong> `analytics` is at 82% of plan quota.</div>
+          <div class="alert alert-error">❌ <strong>Deploy:</strong> v2.14.0 rolled back on `storefront` at 08:30.</div>
+          <div class="alert alert-info">ℹ️ <strong>Integrations:</strong> webhook delivery degraded, retrying.</div>
+          <div class="alert alert-dismissible">
+            💡 <strong>New:</strong> audit-log export now supports scheduled delivery.
+            <button class="alert-close" onclick="this.parentElement.remove()" aria-label="Close">×</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ACTIVITY TABLE ========== -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="arch-row arch-row--between arch-row--wrap">
+      <div>
+        <h2>Recent Activity</h2>
+        <p class="muted">Audit trail across all projects, most recent first.</p>
+      </div>
+      <button class="btn btn-ghost" onclick="showToast('Full audit log opened')">View All</button>
+    </div>
+    <div class="table-wrapper">
+      <table class="table">
+        <thead>
+          <tr><th>Time</th><th>Actor</th><th>Action</th><th>Project</th><th>Result</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>09:41</td><td>k.tanaka</td><td>Rotated API key</td><td>payments</td><td><span class="tag tag-success">Success</span></td></tr>
+          <tr><td>09:22</td><td>ci-bot</td><td>Deploy v2.14.1</td><td>storefront</td><td><span class="tag tag-success">Success</span></td></tr>
+          <tr><td>08:57</td><td>a.osei</td><td>Invited 2 members</td><td>workspace</td><td><span class="tag tag-warning">Pending</span></td></tr>
+          <tr><td>08:30</td><td>ci-bot</td><td>Deploy v2.14.0</td><td>storefront</td><td><span class="tag tag-error">Rolled Back</span></td></tr>
+          <tr><td>07:12</td><td>system</td><td>Nightly backup</td><td>all projects</td><td><span class="tag tag-success">Success</span></td></tr>
+          <tr><td>06:48</td><td>m.ruiz</td><td>Changed role: viewer → editor</td><td>workspace</td><td><span class="tag tag-success">Success</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ========== QUICK ACTIONS + TEAM ========== -->
+<section class="section">
+  <div class="container">
+    <div class="arch-grid arch-grid--2">
+      <div class="card arch-card-pad">
+        <h3>Quick Actions</h3>
+        <div class="arch-grid arch-grid--2">
+          <button class="btn btn-outline" onclick="showToast('API key created — shown once')">Create API Key</button>
+          <button class="btn btn-outline" onclick="openPopup('signupPopup')">Invite Teammate</button>
+          <button class="btn btn-outline" onclick="showToast('Webhook test delivered: 200 OK')">Test Webhook</button>
+          <button class="btn btn-outline" onclick="showToast('Maintenance window scheduled')">Schedule Maintenance</button>
+        </div>
+      </div>
+      <div class="card arch-card-pad">
+        <div class="arch-row arch-row--between">
+          <h3>Team</h3>
+          <span class="arch-meta"><span>9 of 25 seats used</span></span>
+        </div>
+        <div class="arch-stack arch-stack--tight">
+          <div class="arch-row arch-row--between">
+            <span class="arch-row"><span class="arch-avatar">KT</span> k.tanaka</span>
+            <span class="tag tag-primary">Owner</span>
+          </div>
+          <div class="arch-row arch-row--between">
+            <span class="arch-row"><span class="arch-avatar">AO</span> a.osei</span>
+            <span class="tag tag-info">Admin</span>
+          </div>
+          <div class="arch-row arch-row--between">
+            <span class="arch-row"><span class="arch-avatar">MR</span> m.ruiz</span>
+            <span class="tag tag-info">Editor</span>
+          </div>
+          <div class="arch-row arch-row--between">
+            <span class="arch-row"><span class="arch-avatar">+6</span> six more</span>
+            <span class="tag tag-success">Active</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== WHAT'S NEW (SLIDER) ========== -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <h2>What's New in the Console</h2>
+      <p>This quarter's releases, in five screens.</p>
+    </div>
+    <div class="slider" id="slider">
+      <div class="slider-track" id="sliderTrack">
+        <div class="slide slide-i"><h3>Command Palette</h3><p>Every action, one keystroke away</p></div>
+        <div class="slide slide-ii"><h3>Live Dashboards</h3><p>Sub-second metrics without a refresh</p></div>
+        <div class="slide slide-iii"><h3>Role Templates</h3><p>Provision a new team in one click</p></div>
+        <div class="slide slide-iv"><h3>Cost Explorer</h3><p>See tomorrow's invoice today</p></div>
+        <div class="slide slide-v"><h3>Scheduled Exports</h3><p>Audit logs, delivered nightly</p></div>
+      </div>
+      <button class="slider-btn slider-prev" onclick="moveSlider(-1)" aria-label="Previous slide">❮</button>
+      <button class="slider-btn slider-next" onclick="moveSlider(1)" aria-label="Next slide">❯</button>
+      <div class="slider-dots" id="sliderDots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SUPPORT TICKET ========== -->
+<section class="section" id="contact">
+  <div class="container container-narrow">
+    <div class="section-header">
+      <h2>Open a Support Ticket</h2>
+      <p>Median first response: 1h 52m. We're on it.</p>
+    </div>
+    <form id="contactForm" class="form-card" novalidate>
+      <div class="form-group">
+        <label for="cName">Full Name <span class="req">*</span></label>
+        <input type="text" id="cName" name="name" placeholder="Jordan Reyes" required>
+        <small class="error-msg" id="errName"></small>
+      </div>
+      <div class="form-group">
+        <label for="cEmail">Work Email <span class="req">*</span></label>
+        <input type="email" id="cEmail" name="email" placeholder="you@company.com" required>
+        <small class="error-msg" id="errEmail"></small>
+      </div>
+      <div class="form-group">
+        <label for="cPhone">Phone</label>
+        <input type="tel" id="cPhone" name="phone" placeholder="For urgent escalations">
+        <small class="error-msg" id="errPhone"></small>
+      </div>
+      <div class="form-group">
+        <label for="cSubject">Severity <span class="req">*</span></label>
+        <select id="cSubject" name="subject" required>
+          <option value="">-- Choose --</option>
+          <option>Question</option>
+          <option>Bug report</option>
+          <option>Degraded service</option>
+          <option>Production down</option>
+        </select>
+        <small class="error-msg" id="errSubject"></small>
+      </div>
+      <div class="form-group">
+        <label for="cMessage">Describe the Issue <span class="req">*</span></label>
+        <textarea id="cMessage" name="message" rows="5" placeholder="Include project name and request IDs..." required minlength="10"></textarea>
+        <small class="error-msg" id="errMessage"></small>
+      </div>
+      <div class="form-group">
+        <label class="checkbox"><input type="checkbox" id="cTerms" required> Support may access diagnostic data for this ticket <span class="req">*</span></label>
+        <small class="error-msg" id="errTerms"></small>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Submit Ticket</button>
+      <div class="form-success" id="formSuccess" hidden>✅ Ticket created — reference #4821 sent to your email.</div>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4><span class="ornate-mark">❧</span> Nexus</h4>
+        <p>Building the future, one element at a time.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Twitter"><span class="material-symbols-outlined">alternate_email</span></a>
+          <a href="#" aria-label="GitHub"><span class="material-symbols-outlined">code</span></a>
+          <a href="#" aria-label="LinkedIn"><span class="material-symbols-outlined">group</span></a>
+          <a href="#" aria-label="YouTube"><span class="material-symbols-outlined">play_circle</span></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul><li><a href="#">Features</a></li><li><a href="#">Pricing</a></li><li><a href="#">Docs</a></li><li><a href="#">Changelog</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul><li><a href="#">About</a></li><li><a href="#">Blog</a></li><li><a href="#">Careers</a></li><li><a href="#">Contact</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li><li><a href="#">Cookies</a></li><li><a href="#">Licenses</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; MMXXV Nexus. All rights reserved.</p>
+      <p>Made with care using semantic HTML</p>
+    </div>
+  </div>
+</footer>
+
+<div class="popup-overlay" id="loginPopup">
+  <div class="popup">
+    <button class="popup-close" onclick="closePopup('loginPopup')" aria-label="Close"><span class="material-symbols-outlined">close</span></button>
+    <h2>Welcome Back</h2>
+    <p>Sign in to your account</p>
+    <form onsubmit="event.preventDefault(); closePopup('loginPopup'); showToast('Logged in successfully!')" novalidate>
+      <div class="form-group">
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="loginPass">Password</label>
+        <input type="password" id="loginPass" placeholder="••••••••" required>
+      </div>
+      <div class="form-group">
+        <label class="checkbox"><input type="checkbox"> Remember me</label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+      <p class="popup-footer">No account? <a href="#" onclick="closePopup('loginPopup'); openPopup('signupPopup')">Sign up</a></p>
+    </form>
+  </div>
+</div>
+
+<div class="popup-overlay" id="signupPopup">
+  <div class="popup">
+    <button class="popup-close" onclick="closePopup('signupPopup')" aria-label="Close"><span class="material-symbols-outlined">close</span></button>
+    <h2>Create Account</h2>
+    <p>Start your free trial today</p>
+    <form onsubmit="event.preventDefault(); closePopup('signupPopup'); showToast('Account created!')" novalidate>
+      <div class="form-group">
+        <label for="suName">Full Name</label>
+        <input type="text" id="suName" placeholder="John Doe" required>
+      </div>
+      <div class="form-group">
+        <label for="suEmail">Email</label>
+        <input type="email" id="suEmail" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="suPass">Password</label>
+        <input type="password" id="suPass" placeholder="••••••••" required minlength="6">
+        <small>Password must be at least 6 characters</small>
+      </div>
+      <div class="form-group">
+        <label class="checkbox"><input type="checkbox" required> I accept the <a href="#">Terms</a></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+      <p class="popup-footer">Have an account? <a href="#" onclick="closePopup('signupPopup'); openPopup('loginPopup')">Sign in</a></p>
+    </form>
+  </div>
+</div>
+
+<div class="popup-overlay" id="videoPopup">
+  <div class="popup popup-video">
+    <button class="popup-close" onclick="closePopup('videoPopup')" aria-label="Close"><span class="material-symbols-outlined">close</span></button>
+    <h2>Product Demo</h2>
+    <div class="video-placeholder">
+      <button class="play-btn" onclick="this.parentElement.innerHTML='<iframe width=100% height=100% src=https://www.youtube.com/embed/dQw4w9WgXcQ frameborder=0 allowfullscreen></iframe>'"><span class="material-symbols-outlined">play_arrow</span></button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<button class="back-to-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><span class="material-symbols-outlined">arrow_upward</span></button>
+
+<script src="../script.js"></script>
+</body>
+</html>

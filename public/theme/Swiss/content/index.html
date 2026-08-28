@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Nexus Journal — Swiss Theme</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="/theme/_shared/archetypes.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body data-theme="light">
+
+<header class="navbar" id="navbar">
+  <nav class="nav-container">
+    <a href="#hero" class="logo"><span class="material-symbols-outlined logo-mark">grid_view</span> Nexus</a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
+    <label for="nav-toggle" class="nav-burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#slider">Showcase</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn btn-ghost" onclick="openPopup('loginPopup')">Login</button>
+      <button class="btn btn-primary" onclick="openPopup('signupPopup')">Get Started</button>
+      <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle theme" aria-pressed="false"><span class="material-symbols-outlined">dark_mode</span></button>
+    </div>
+  </nav>
+</header>
+
+<!-- ========== MASTHEAD ========== -->
+<section class="container arch-top" id="hero">
+  <div class="arch-row arch-row--between arch-row--wrap">
+    <span class="badge">The Nexus Journal</span>
+    <div class="arch-meta">
+      <span>Vol. XII · No. 34</span>
+      <span>Thursday, August 28</span>
+      <span>Weekly edition</span>
+    </div>
+  </div>
+  <hr class="arch-divider">
+</section>
+
+<!-- ========== LEAD STORY + SIDEBAR ========== -->
+<section class="container" id="features">
+  <div class="arch-main-aside">
+    <article>
+      <span class="arch-kicker">Essay · Information Architecture</span>
+      <h1 class="hero-title arch-headline--article arch-left">The Death of the Homepage</h1>
+      <p class="hero-subtitle arch-left">Entry points are fragmenting. Readers arrive sideways — from search, feeds, and links — and never see the front door we spent months polishing.</p>
+      <div class="arch-meta">
+        <span>By <strong>A. Rivera</strong></span>
+        <span>Senior Editor</span>
+        <span>14 min read</span>
+        <span class="tag tag-primary">Featured</span>
+      </div>
+      <hr class="arch-divider">
+      <div class="arch-prose">
+        <p>For twenty years we treated the homepage as the building's lobby: marble floors, a directory, a receptionist. Analytics tell a ruder story. On this very publication, fewer than one visit in five begins at the front door. The rest climb in through windows — a search result deep-links into section three of a reference page, a group chat drops someone onto a two-year-old essay, a feed serves the pull-quote without the argument.</p>
+        <p>The instinct is to fight for the lobby: bigger heroes, louder carousels, more curation. The evidence says to do the opposite. Every page must now carry the context the homepage used to provide — who we are, where the reader stands, and where to go next.</p>
+        <h2>Wayfinding beats decoration</h2>
+        <p>The publications adapting fastest share a trait: they invest in the furniture of orientation. Persistent section labels. Bylines that link to a body of work rather than a bio modal. Dates that admit their age. "Related" lists chosen by editors, not engagement models.</p>
+        <blockquote>
+          <p>"A reader who lands mid-archive is not lost. They are exactly where the internet put them. The question is whether your page behaves like a destination or a dead end."</p>
+        </blockquote>
+        <p>None of this requires abandoning the front page. It requires demoting it — from monument to map. The homepage becomes one view of the archive among many, tuned for the loyal minority who still type the URL.</p>
+        <h2>What we are changing</h2>
+        <p>Starting with this issue, every article carries its section, series, and a hand-picked reading trail in the footer. The archive gains a chronology view. And the homepage, this quaint lobby, will keep its marble — we simply stopped pretending everyone walks through it.</p>
+      </div>
+      <div class="arch-row arch-row--wrap">
+        <button class="btn btn-outline" onclick="showToast('Added to your reading list')">Save for Later</button>
+        <button class="btn btn-ghost" onclick="showToast('Link copied')">Share</button>
+      </div>
+    </article>
+
+    <aside class="arch-aside">
+      <div class="card arch-card-pad">
+        <h3>Latest</h3>
+        <div class="arch-stack--tight arch-stack">
+          <div>
+            <strong>Newsroom Notebook, Week 34</strong>
+            <div class="arch-meta"><span>News</span><span>2h ago</span></div>
+          </div>
+          <hr class="arch-divider">
+          <div>
+            <strong>A Field Guide to Design Tokens</strong>
+            <div class="arch-meta"><span>Docs</span><span>5h ago</span></div>
+          </div>
+          <hr class="arch-divider">
+          <div>
+            <strong>Interview: The Last Maintainer</strong>
+            <div class="arch-meta"><span>Interview</span><span>1d ago</span></div>
+          </div>
+          <hr class="arch-divider">
+          <div>
+            <strong>What We Learned Shipping v3</strong>
+            <div class="arch-meta"><span>Engineering</span><span>2d ago</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="card arch-card-pad">
+        <h3>Sections</h3>
+        <div class="arch-row arch-row--wrap">
+          <span class="tag tag-primary">Essays</span>
+          <span class="tag tag-info">News</span>
+          <span class="tag tag-success">Docs</span>
+          <span class="tag tag-warning">Knowledge Base</span>
+          <span class="tag tag-primary">Interviews</span>
+          <span class="tag tag-info">Reference</span>
+        </div>
+      </div>
+      <div class="card arch-card-pad">
+        <h3>Most Read</h3>
+        <ol class="arch-prose">
+          <li>The Death of the Homepage</li>
+          <li>A Field Guide to Design Tokens</li>
+          <li>Style Guide, Third Edition</li>
+          <li>Newsroom Notebook, Week 33</li>
+          <li>Docs People Actually Read</li>
+        </ol>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ========== MORE FROM THIS ISSUE ========== -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <h2>More From This Issue</h2>
+      <p>Reported, edited, and fact-checked — the rest of Vol. XII, No. 34.</p>
+    </div>
+    <div class="arch-stack">
+      <article class="arch-row arch-row--top arch-row--between arch-row--wrap">
+        <div class="arch-prose">
+          <span class="arch-kicker">News</span>
+          <h3>Standards Body Ratifies the Quiet Web Proposal</h3>
+          <p>Three years of committee drafts end with a unanimous vote. What changes for publishers on January first, and what quietly doesn't.</p>
+          <div class="arch-meta"><span>By Staff</span><span>6 min read</span></div>
+        </div>
+        <span class="tag tag-info">News</span>
+      </article>
+      <hr class="arch-divider">
+      <article class="arch-row arch-row--top arch-row--between arch-row--wrap">
+        <div class="arch-prose">
+          <span class="arch-kicker">Knowledge Base</span>
+          <h3>What We Learned Shipping v3</h3>
+          <p>A retrospective entry covering the migration, the two mistakes worth naming, and the metrics that finally moved.</p>
+          <div class="arch-meta"><span>By P. Okafor</span><span>9 min read</span></div>
+        </div>
+        <span class="tag tag-warning">KB</span>
+      </article>
+      <hr class="arch-divider">
+      <article class="arch-row arch-row--top arch-row--between arch-row--wrap">
+        <div class="arch-prose">
+          <span class="arch-kicker">Interview</span>
+          <h3>The Last Maintainer</h3>
+          <p>Ten years into a project nobody else would keep alive, on documentation as a love language and burnout as a budgeting problem.</p>
+          <div class="arch-meta"><span>By M. Chen</span><span>18 min read</span></div>
+        </div>
+        <span class="tag tag-primary">Interview</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== DOCUMENTATION HUB (TABS) ========== -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Documentation Hub</h2>
+      <p>The living manuals — guides, reference, and every change we've shipped.</p>
+    </div>
+    <div class="tabs">
+      <input type="radio" name="tab" id="tab1" checked>
+      <input type="radio" name="tab" id="tab2">
+      <input type="radio" name="tab" id="tab3">
+      <div class="tab-labels">
+        <label for="tab1" class="tab-label">Guides</label>
+        <label for="tab2" class="tab-label">Reference</label>
+        <label for="tab3" class="tab-label">Changelog</label>
+      </div>
+      <div class="tab-content">
+        <div class="tab-panel">
+          <h3>Getting Started Guides</h3>
+          <p>Step-by-step walkthroughs from a blank page to a published article: editor setup, style checks, and the review workflow.</p>
+        </div>
+        <div class="tab-panel">
+          <h3>API &amp; Style Reference</h3>
+          <ul>
+            <li>House style: capitalization, numerals, citations</li>
+            <li>Content API endpoints and query parameters</li>
+            <li>Embeds, footnotes, and figure conventions</li>
+            <li>Metadata schema for every article type</li>
+          </ul>
+        </div>
+        <div class="tab-panel">
+          <h3>Changelog</h3>
+          <p>Every notable platform change, newest first, with migration notes where a change affects existing articles.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FROM THE ARCHIVE (SLIDER) ========== -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <h2>From the Archive</h2>
+      <p>Five pieces our readers return to, year after year.</p>
+    </div>
+    <div class="slider" id="slider">
+      <div class="slider-track" id="sliderTrack">
+        <div class="slide slide-i"><h3>The Grid Issue</h3><p>Our most-cited layout deep dive</p></div>
+        <div class="slide slide-ii"><h3>Typography Annual</h3><p>Twelve typefaces, twelve essays</p></div>
+        <div class="slide slide-iii"><h3>The Documentation Issue</h3><p>Writing docs people actually read</p></div>
+        <div class="slide slide-iv"><h3>Accessibility Special</h3><p>Reporting from the assistive front lines</p></div>
+        <div class="slide slide-v"><h3>The Archive Itself</h3><p>How we preserve twenty years of writing</p></div>
+      </div>
+      <button class="slider-btn slider-prev" onclick="moveSlider(-1)" aria-label="Previous slide">❮</button>
+      <button class="slider-btn slider-next" onclick="moveSlider(1)" aria-label="Next slide">❯</button>
+      <div class="slider-dots" id="sliderDots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== LETTERS TO THE EDITORS ========== -->
+<section class="section" id="contact">
+  <div class="container container-narrow">
+    <div class="section-header">
+      <h2>Write to the Editors</h2>
+      <p>Pitches, corrections, letters — we read all of it, and print the best.</p>
+    </div>
+    <form id="contactForm" class="form-card" novalidate>
+      <div class="form-group">
+        <label for="cName">Full Name <span class="req">*</span></label>
+        <input type="text" id="cName" name="name" placeholder="Jordan Reyes" required>
+        <small class="error-msg" id="errName"></small>
+      </div>
+      <div class="form-group">
+        <label for="cEmail">Email <span class="req">*</span></label>
+        <input type="email" id="cEmail" name="email" placeholder="you@example.com" required>
+        <small class="error-msg" id="errEmail"></small>
+      </div>
+      <div class="form-group">
+        <label for="cPhone">Phone</label>
+        <input type="tel" id="cPhone" name="phone" placeholder="Optional">
+        <small class="error-msg" id="errPhone"></small>
+      </div>
+      <div class="form-group">
+        <label for="cSubject">Desk <span class="req">*</span></label>
+        <select id="cSubject" name="subject" required>
+          <option value="">-- Choose --</option>
+          <option>Letter to the Editor</option>
+          <option>Pitch</option>
+          <option>Correction</option>
+          <option>Docs Feedback</option>
+        </select>
+        <small class="error-msg" id="errSubject"></small>
+      </div>
+      <div class="form-group">
+        <label for="cMessage">Your Letter <span class="req">*</span></label>
+        <textarea id="cMessage" name="message" rows="5" placeholder="To the editors..." required minlength="10"></textarea>
+        <small class="error-msg" id="errMessage"></small>
+      </div>
+      <div class="form-group">
+        <label class="checkbox"><input type="checkbox" id="cTerms" required> You may publish my letter <span class="req">*</span></label>
+        <small class="error-msg" id="errTerms"></small>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Send to the Newsroom</button>
+      <div class="form-success" id="formSuccess" hidden>✅ Thank you! Your letter has reached the newsroom.</div>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4><span class="material-symbols-outlined">grid_view</span> Nexus</h4>
+        <p>Building the future, one element at a time.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Twitter"><span class="material-symbols-outlined">close</span></a>
+          <a href="#" aria-label="GitHub"><span class="material-symbols-outlined">code</span></a>
+          <a href="#" aria-label="LinkedIn"><span class="material-symbols-outlined">group</span></a>
+          <a href="#" aria-label="YouTube"><span class="material-symbols-outlined">play_arrow</span></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul><li><a href="#">Features</a></li><li><a href="#">Pricing</a></li><li><a href="#">Docs</a></li><li><a href="#">Changelog</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul><li><a href="#">About</a></li><li><a href="#">Blog</a></li><li><a href="#">Careers</a></li><li><a href="#">Contact</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li><li><a href="#">Cookies</a></li><li><a href="#">Licenses</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Nexus. All rights reserved.</p>
+      <p>Made with precision using semantic HTML</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== POPUP: LOGIN ========== -->
+<div class="popup-overlay" id="loginPopup">
+  <div class="popup">
+    <button class="popup-close" onclick="closePopup('loginPopup')" aria-label="Close"><span class="material-symbols-outlined">close</span></button>
+    <h2>Welcome Back</h2>
+    <p>Sign in to your account</p>
+    <form onsubmit="event.preventDefault(); closePopup('loginPopup'); showToast('Logged in successfully!')" novalidate>
+      <div class="form-group">
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="loginPass">Password</label>
+        <input type="password" id="loginPass" placeholder="••••••••" required>
+      </div>
+      <div class="form-group">
+        <label class="checkbox"><input type="checkbox"> Remember me</label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+      <p class="popup-footer">No account? <a href="#" onclick="closePopup('loginPopup'); openPopup('signupPopup')">Sign up</a></p>
+    </form>
+  </div>
+</div>
+
+<!-- ========== POPUP: SIGNUP ========== -->
+<div class="popup-overlay" id="signupPopup">
+  <div class="popup">
+    <button class="popup-close" onclick="closePopup('signupPopup')" aria-label="Close"><span class="material-symbols-outlined">close</span></button>
+    <h2>Create Account</h2>
+    <p>Start your free trial today</p>
+    <form onsubmit="event.preventDefault(); closePopup('signupPopup'); showToast('Account created!')" novalidate>
+      <div class="form-group">
+        <label for="suName">Full Name</label>
+        <input type="text" id="suName" placeholder="John Doe" required>
+      </div>
+      <div class="form-group">
+        <label for="suEmail">Email</label>
+        <input type="email" id="suEmail" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="suPass">Password</label>
+        <input type="password" id="suPass" placeholder="••••••••" required minlength="6">
+        <small>Password must be at least 6 characters</small>
+      </div>
+      <div class="form-group">
+        <label class="checkbox"><input type="checkbox" required> I accept the <a href="#">Terms</a></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+      <p class="popup-footer">Have an account? <a href="#" onclick="closePopup('signupPopup'); openPopup('loginPopup')">Sign in</a></p>
+    </form>
+  </div>
+</div>
+
+<!-- ========== POPUP: VIDEO ========== -->
+<div class="popup-overlay" id="videoPopup">
+  <div class="popup popup-video">
+    <button class="popup-close" onclick="closePopup('videoPopup')" aria-label="Close"><span class="material-symbols-outlined">close</span></button>
+    <h2>Product Demo</h2>
+    <div class="video-placeholder">
+      <button class="play-btn" onclick="this.parentElement.innerHTML='<iframe width=100% height=100% src=https://www.youtube.com/embed/dQw4w9WgXcQ frameborder=0 allowfullscreen></iframe>'"><span class="material-symbols-outlined">play_arrow</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== TOAST ========== -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ========== BACK TO TOP ========== -->
+<button class="back-to-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><span class="material-symbols-outlined">arrow_upward</span></button>
+
+<script src="../script.js"></script>
+</body>
+</html>
