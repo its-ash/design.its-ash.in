@@ -303,7 +303,7 @@ useHead({
                 </div>
                 <div class="grid grid-cols-2 gap-3 p-3 md:grid-cols-1">
                     <button
-                        v-for="theme in THEMES"
+                        v-for="(theme, idx) in THEMES"
                         :key="theme.id"
                         type="button"
                         class="group relative flex flex-col overflow-hidden border text-left transition-all duration-200"
@@ -340,6 +340,11 @@ useHead({
                                 class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100 pointer-events-none"
                                 aria-hidden="true"
                             />
+                            <span
+                                class="absolute right-1.5 top-1.5 z-10 border border-white/10 bg-black/70 px-2 py-1 font-mono text-sm font-bold leading-none backdrop-blur-sm"
+                                :style="theme.id === activeThemeId ? 'color:#e6c558;border-color:rgba(212,175,55,0.5)' : 'color:#94a3b8'"
+                                aria-hidden="true"
+                            >{{ String(idx + 1).padStart(2, '0') }}</span>
                         </div>
                         <div class="flex items-center justify-between gap-2 px-3 py-2.5">
                             <span class="truncate text-sm font-semibold">{{ theme.name }}</span>
