@@ -2,11 +2,16 @@
 import { marked } from 'marked';
 import type { ThemeInfo } from '~/utils/themes';
 import { THEMES } from '~/utils/themes';
+import type { SiteTypeInfo } from '~/utils/siteTypes';
+import { SITE_TYPES, DEFAULT_SITE_TYPE_ID, previewPathFor } from '~/utils/siteTypes';
 
 const route = useRoute();
 const router = useRouter();
 
 const activeThemeId = ref<string>(THEMES[0].id);
+const activeTypeId = ref<string>(DEFAULT_SITE_TYPE_ID);
+const typeMenuOpen = ref(false);
+const typeMenuRef = ref<HTMLElement | null>(null);
 const promptOpen = ref(false);
 const promptRaw = ref('');
 const promptHtml = ref('');
@@ -26,17 +31,26 @@ function selectTheme(id: string) {
     if (isMobile.value) mobileTab.value = 'preview';
 }
 
+function selectType(id: string) {
+    activeTypeId.value = id;
+    typeMenuOpen.value = false;
+}
+
 const activeTheme = computed<ThemeInfo>(
     () => THEMES.find((t) => t.id === activeThemeId.value) || THEMES[0],
 );
 
-const iframeSrc = computed(() => activeTheme.value.previewPath);
+const activeType = computed<SiteTypeInfo>(
+    () => SITE_TYPES.find((t) => t.id === activeTypeId.value) || SITE_TYPES[0],
+);
+
+const iframeSrc = computed(() => previewPathFor(activeTheme.value, activeType.value));
 
 const fullIframeUrl = computed(() => {
     if (import.meta.client) {
-        return window.location.origin + activeTheme.value.previewPath;
+        return window.location.origin + iframeSrc.value;
     }
-    return `https://design.its-ash.in${activeTheme.value.previewPath}`;
+    return `https://design.its-ash.in${iframeSrc.value}`;
 });
 
 const thumbObserver = ref<IntersectionObserver | null>(null);
@@ -67,19 +81,42 @@ watch(activeThemeId, (id) => {
     }
 });
 
+watch(activeTypeId, (id) => {
+    if (route.query.type !== id) {
+        router.replace({ query: { ...route.query, type: id } });
+    }
+});
+
+function handleTypeMenuOutside(e: MouseEvent) {
+    if (typeMenuOpen.value && typeMenuRef.value && !typeMenuRef.value.contains(e.target as Node)) {
+        typeMenuOpen.value = false;
+    }
+}
+
+function handleTypeMenuKey(e: KeyboardEvent) {
+    if (e.key === 'Escape') typeMenuOpen.value = false;
+}
+
 onMounted(() => {
     const q = route.query.theme as string | undefined;
+    const qType = route.query.type as string | undefined;
     if (q && THEMES.some((t) => t.id === q)) {
         activeThemeId.value = q;
-    } else {
-        router.replace({ query: { ...route.query, theme: activeThemeId.value } });
     }
+    if (qType && SITE_TYPES.some((t) => t.id === qType)) {
+        activeTypeId.value = qType;
+    }
+    router.replace({ query: { ...route.query, theme: activeThemeId.value, type: activeTypeId.value } });
     checkMobile();
     initThumbObserver();
     window.addEventListener('resize', checkMobile);
+    document.addEventListener('click', handleTypeMenuOutside);
+    document.addEventListener('keydown', handleTypeMenuKey);
 });
 onBeforeUnmount(() => {
     window.removeEventListener('resize', checkMobile);
+    document.removeEventListener('click', handleTypeMenuOutside);
+    document.removeEventListener('keydown', handleTypeMenuKey);
     thumbObserver.value?.disconnect();
 });
 
@@ -266,7 +303,7 @@ useHead({
                 </div>
                 <div class="grid grid-cols-2 gap-3 p-3 md:grid-cols-1">
                     <button
-                        v-for="theme in THEMES"
+                        v-for="(theme, idx) in THEMES"
                         :key="theme.id"
                         type="button"
                         class="group relative flex flex-col overflow-hidden border text-left transition-all duration-200"
@@ -289,7 +326,7 @@ useHead({
                         >
                             <iframe
                                 v-if="visibleThumbs.has(theme.id)"
-                                :src="theme.previewPath"
+                                :src="previewPathFor(theme, activeType)"
                                 :title="`${theme.name} thumbnail`"
                                 class="pointer-events-none absolute left-0 top-0 origin-top-left border-0"
                                 style="width: 1280px; height: 800px; transform: scale(0.25)"
@@ -303,6 +340,11 @@ useHead({
                                 class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100 pointer-events-none"
                                 aria-hidden="true"
                             />
+                            <span
+                                class="absolute right-1.5 top-1.5 z-10 border border-white/10 bg-black/70 px-2 py-1 font-mono text-sm font-bold leading-none backdrop-blur-sm"
+                                :style="theme.id === activeThemeId ? 'color:#e6c558;border-color:rgba(212,175,55,0.5)' : 'color:#94a3b8'"
+                                aria-hidden="true"
+                            >{{ String(idx + 1).padStart(2, '0') }}</span>
                         </div>
                         <div class="flex items-center justify-between gap-2 px-3 py-2.5">
                             <span class="truncate text-sm font-semibold">{{ theme.name }}</span>
@@ -335,14 +377,60 @@ useHead({
                             </template>
                         </ClientOnly>
                     </div>
-                    <button class="btn-ghost" @click="reloadIframe" aria-label="Reload preview">
-                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            aria-hidden="true">
-                            <path d="M21 12a9 9 0 1 1-2.64-6.36" />
-                            <path d="M21 3v6h-6" />
-                        </svg>
-                        <span class="hidden sm:inline">Reload</span>
-                    </button>
+                    <div class="flex shrink-0 items-center gap-1.5 sm:gap-2">
+                        <div ref="typeMenuRef" class="relative">
+                            <button
+                                class="btn-ghost"
+                                aria-haspopup="listbox"
+                                :aria-expanded="typeMenuOpen"
+                                aria-label="Select website type"
+                                @click="typeMenuOpen = !typeMenuOpen"
+                            >
+                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    aria-hidden="true">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                                    <path d="M3 9h18" />
+                                    <path d="M9 21V9" />
+                                </svg>
+                                {{ activeType.name }}
+                                <svg class="h-3.5 w-3.5 transition-transform" :class="typeMenuOpen ? 'rotate-180' : ''"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M6 9l6 6 6-6" />
+                                </svg>
+                            </button>
+                            <ul
+                                v-if="typeMenuOpen"
+                                role="listbox"
+                                aria-label="Website type"
+                                class="absolute right-0 top-full z-30 mt-2 w-72 overflow-hidden border border-[#2a2a2a] bg-[#111111] py-1 shadow-2xl"
+                            >
+                                <li v-for="type in SITE_TYPES" :key="type.id" role="option"
+                                    :aria-selected="type.id === activeTypeId ? 'true' : 'false'">
+                                    <button
+                                        type="button"
+                                        class="flex w-full flex-col gap-0.5 px-4 py-2.5 text-left transition hover:bg-white/5"
+                                        @click="selectType(type.id)"
+                                    >
+                                        <span class="flex items-center justify-between gap-2 text-sm font-semibold"
+                                            :style="type.id === activeTypeId ? 'color:#e6c558' : ''">
+                                            {{ type.name }}
+                                            <span v-if="type.id === activeTypeId" class="h-1.5 w-1.5 shrink-0"
+                                                style="background:#d4af37" aria-hidden="true" />
+                                        </span>
+                                        <span class="text-xs text-ink-400">{{ type.tagline }}</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <button class="btn-ghost" @click="reloadIframe" aria-label="Reload preview">
+                            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                aria-hidden="true">
+                                <path d="M21 12a9 9 0 1 1-2.64-6.36" />
+                                <path d="M21 3v6h-6" />
+                            </svg>
+                            <span class="hidden sm:inline">Reload</span>
+                        </button>
+                    </div>
                 </div>
                 <div class="relative flex-1 bg-ink-950">
                     <iframe :key="iframeKey" ref="iframeRef" :src="iframeSrc" :title="`${activeTheme.name} preview`"
