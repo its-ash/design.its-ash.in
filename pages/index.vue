@@ -203,10 +203,12 @@ useHead({
 <template>
     <div class="flex h-screen flex-col">
         <!-- Top bar -->
-        <header class="flex items-center justify-between gap-2 border-b border-[#1f1f1f] bg-[#111111] px-3 py-2.5 sm:px-4 md:gap-3 md:px-6 md:py-3">
+        <header
+            class="flex items-center justify-between gap-2 border-b border-[#1f1f1f] bg-[#111111] px-3 py-2.5 sm:px-4 md:gap-3 md:px-6 md:py-3">
             <div class="flex items-center gap-3">
                 <div class="leading-tight">
-                    <h1 class="text-sm font-bold tracking-tight sm:text-base md:text-lg" style="color:#e6c558">Design Prompt</h1>
+                    <h1 class="text-sm font-bold tracking-tight sm:text-base md:text-lg" style="color:#e6c558">Design
+                        Prompt</h1>
                     <p class="hidden text-xs text-ink-400 sm:block">30 UI themes · live preview + AI prompts</p>
                 </div>
             </div>
@@ -215,14 +217,16 @@ useHead({
                     class="btn-ghost text-xs font-medium" aria-label="Visit its-ash.github.io">
                     <span class="hidden sm:inline">its-ash.github.io</span>
                     <span class="sm:hidden">its-ash</span>
-                    <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        aria-hidden="true">
                         <path d="M7 17L17 7M7 7h10v10" />
                     </svg>
                 </a>
                 <span class="hidden bg-[#1f1f1f] px-2.5 py-1 text-xs font-medium text-ink-300 md:inline-flex">
                     {{ THEMES.length }} themes
                 </span>
-                <button class="btn-primary px-2.5 sm:px-4" @click="loadPrompt(activeTheme)" aria-label="Show design prompt">
+                <button class="btn-primary px-2.5 sm:px-4" @click="loadPrompt(activeTheme)"
+                    aria-label="Show design prompt">
                     <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                         aria-hidden="true">
                         <path d="M4 4h12v12H4z" />
@@ -235,20 +239,14 @@ useHead({
 
         <!-- Mobile tab switcher -->
         <nav class="flex border-b border-[#1f1f1f] bg-[#111111] md:hidden" aria-label="Mobile navigation">
-            <button
-                class="flex-1 py-2.5 text-xs font-semibold uppercase tracking-wider transition"
+            <button class="flex-1 py-2.5 text-xs font-semibold uppercase tracking-wider transition"
                 :class="mobileTab === 'themes' ? 'bg-[#1f1f1f]' : 'text-ink-400'"
-                :style="mobileTab === 'themes' ? 'color:#e6c558' : ''"
-                @click="mobileTab = 'themes'"
-            >
+                :style="mobileTab === 'themes' ? 'color:#e6c558' : ''" @click="mobileTab = 'themes'">
                 Themes
             </button>
-            <button
-                class="flex-1 py-2.5 text-xs font-semibold uppercase tracking-wider transition"
+            <button class="flex-1 py-2.5 text-xs font-semibold uppercase tracking-wider transition"
                 :class="mobileTab === 'preview' ? 'bg-[#1f1f1f]' : 'text-ink-400'"
-                :style="mobileTab === 'preview' ? 'color:#e6c558' : ''"
-                @click="mobileTab = 'preview'"
-            >
+                :style="mobileTab === 'preview' ? 'color:#e6c558' : ''" @click="mobileTab = 'preview'">
                 Preview
             </button>
         </nav>
@@ -256,72 +254,45 @@ useHead({
         <!-- Body: sidebar + preview -->
         <div class="flex flex-1 overflow-hidden">
             <!-- Sidebar -->
-            <aside
-                class="scrollbar-thin w-full shrink-0 overflow-y-auto border-r border-[#1f1f1f] bg-[#0d0d0d] md:w-80"
-                :class="isMobile && mobileTab !== 'themes' ? 'hidden' : 'block'"
-                aria-label="Theme list"
-            >
+            <aside class="scrollbar-thin w-full shrink-0 overflow-y-auto border-r border-[#1f1f1f] bg-[#0d0d0d] md:w-80"
+                :class="isMobile && mobileTab !== 'themes' ? 'hidden' : 'block'" aria-label="Theme list">
                 <div class="sticky top-0 z-10 border-b border-[#1f1f1f] bg-[#111111] px-4 py-3">
                     <p class="text-xs font-semibold uppercase tracking-wider text-ink-400">Themes</p>
                 </div>
                 <div class="grid grid-cols-2 gap-3 p-3 md:grid-cols-1">
-                    <button
-                        v-for="theme in THEMES"
-                        :key="theme.id"
-                        type="button"
+                    <button v-for="theme in THEMES" :key="theme.id" type="button"
                         class="group relative flex flex-col overflow-hidden border text-left transition-all duration-200"
-                        :class="
-                            theme.id === activeThemeId
+                        :class="theme.id === activeThemeId
                                 ? 'border-transparent shadow-lg'
                                 : 'border-white/10 hover:border-white/20 hover:bg-white/5'
-                        "
-                        :style="
-                            theme.id === activeThemeId
+                            " :style="theme.id === activeThemeId
                                 ? 'box-shadow:0 0 0 1px rgba(212,175,55,0.6),0 8px 20px rgba(212,175,55,0.18)'
                                 : ''
-                        "
-                        :aria-current="theme.id === activeThemeId ? 'true' : 'false'"
-                        @click="selectTheme(theme.id)"
-                    >
-                        <div
-                            :ref="(el) => observeThumb(el as HTMLElement, theme.id)"
-                            class="relative aspect-[16/10] w-full overflow-hidden bg-ink-950 pointer-events-none"
-                        >
-                            <iframe
-                                v-if="visibleThumbs.has(theme.id)"
-                                :src="theme.previewPath"
+                            " :aria-current="theme.id === activeThemeId ? 'true' : 'false'" @click="selectTheme(theme.id)">
+                        <div :ref="(el) => observeThumb(el as HTMLElement, theme.id)"
+                            class="relative aspect-[16/10] w-full overflow-hidden bg-ink-950 pointer-events-none">
+                            <iframe v-if="visibleThumbs.has(theme.id)" :src="theme.previewPath"
                                 :title="`${theme.name} thumbnail`"
                                 class="pointer-events-none absolute left-0 top-0 origin-top-left border-0"
-                                style="width: 1280px; height: 800px; transform: scale(0.25)"
-                                loading="lazy"
-                                scrolling="no"
-                                sandbox="allow-scripts allow-same-origin"
-                                tabindex="-1"
-                                aria-hidden="true"
-                            />
+                                style="width: 1280px; height: 800px; transform: scale(0.25)" loading="lazy"
+                                scrolling="no" sandbox="allow-scripts allow-same-origin" tabindex="-1"
+                                aria-hidden="true" />
                             <span
                                 class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100 pointer-events-none"
-                                aria-hidden="true"
-                            />
+                                aria-hidden="true" />
                         </div>
                         <div class="flex items-center justify-between gap-2 px-3 py-2.5">
                             <span class="truncate text-sm font-semibold">{{ theme.name }}</span>
-                            <span
-                                v-if="theme.id === activeThemeId"
-                                class="h-1.5 w-1.5 shrink-0"
-                                style="background: #d4af37"
-                                aria-hidden="true"
-                            />
+                            <span v-if="theme.id === activeThemeId" class="h-1.5 w-1.5 shrink-0"
+                                style="background: #d4af37" aria-hidden="true" />
                         </div>
                     </button>
                 </div>
             </aside>
 
             <!-- Preview pane -->
-            <main
-                class="flex flex-1 flex-col overflow-hidden"
-                :class="isMobile && mobileTab !== 'preview' ? 'hidden' : 'flex'"
-            >
+            <main class="flex flex-1 flex-col overflow-hidden"
+                :class="isMobile && mobileTab !== 'preview' ? 'hidden' : 'flex'">
                 <div class="flex items-center justify-between gap-2 border-b border-[#1f1f1f] bg-[#111111] px-4 py-2.5">
                     <div class="min-w-0">
                         <h2 class="truncate text-sm font-semibold text-white">{{ activeTheme.name }}</h2>
@@ -354,8 +325,8 @@ useHead({
         </div>
 
         <!-- Prompt modal -->
-        <div v-if="promptOpen" class="fixed inset-0 z-50 flex items-center justify-center p-0 sm:p-4 bg-black/80" role="dialog"
-            aria-modal="true" aria-labelledby="promptTitle">
+        <div v-if="promptOpen" class="fixed inset-0 z-50 flex items-center justify-center p-0 sm:p-4 bg-black/80"
+            role="dialog" aria-modal="true" aria-labelledby="promptTitle">
             <div class="absolute inset-0 bg-black/85" @click="promptOpen = false" />
             <div
                 class="scrollbar-thin relative flex h-full w-full max-w-3xl flex-col overflow-hidden border border-[#2a2a2a] bg-[#111111] shadow-2xl sm:h-auto sm:max-h-[88vh] sm:border">
