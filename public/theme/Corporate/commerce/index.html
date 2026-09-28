@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexus Shop — Corporate Theme</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="/theme/_shared/archetypes.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body data-theme="light">
+
+<header class="navbar" id="navbar">
+  <nav class="nav-container">
+    <a href="#hero" class="logo"><span class="material-symbols-outlined">hub</span> Nexus</a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
+    <label for="nav-toggle" class="nav-burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#slider">Showcase</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn btn-ghost" onclick="openPopup('loginPopup')">Login</button>
+      <button class="btn btn-primary" onclick="openPopup('signupPopup')"><span class="material-symbols-outlined">rocket_launch</span> Get Started</button>
+      <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle theme"><span class="material-symbols-outlined">dark_mode</span></button>
+    </div>
+  </nav>
+</header>
+
+<!-- ========== PROMO STRIP ========== -->
+<section class="container arch-top" id="hero">
+  <div class="alert alert-dismissible">
+    🚚 <strong>Free shipping</strong> on orders over $75 through Sunday.
+    <button class="alert-close" onclick="this.parentElement.remove()" aria-label="Close">×</button>
+  </div>
+</section>
+
+<!-- ========== COLLECTION BANNER + FEATURED PRODUCT ========== -->
+<section class="container">
+  <div class="arch-split arch-split--wide-left">
+    <div class="arch-left">
+      <span class="badge">Autumn Collection — Now Live</span>
+      <h1 class="hero-title arch-headline--article arch-left">The Autumn Drop</h1>
+      <p class="hero-subtitle arch-left">Forty-two new pieces from independent makers. Small batches, honest materials, free returns — always.</p>
+      <div class="arch-row arch-row--wrap">
+        <button class="btn btn-primary btn-lg" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">Shop the Drop</button>
+        <button class="btn btn-ghost" onclick="document.getElementById('slider').scrollIntoView({behavior:'smooth'})">View Lookbook</button>
+      </div>
+    </div>
+    <div class="card arch-card-pad">
+      <span class="tag tag-warning">Featured · Only 8 left</span>
+      <h3>Halden Lounge Chair</h3>
+      <p class="arch-muted">Steam-bent oak and wool bouclé, made to order in Copenhagen. Each chair numbered.</p>
+      <div class="price"><span class="currency">$</span>640</div>
+      <div class="arch-meta"><span>★★★★★ 4.9</span><span>312 reviews</span></div>
+      <button class="btn btn-primary btn-block" onclick="showToast('Halden Lounge Chair added to cart')">Add to Cart</button>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SHOP: FILTERS + PRODUCT GRID ========== -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-header">
+      <h2>Shop All</h2>
+      <p>42 products · 12 makers · ships worldwide</p>
+    </div>
+    <div class="arch-main-aside arch-main-aside--aside-left">
+      <aside class="arch-aside">
+        <div class="card arch-card-pad">
+          <h3>Category</h3>
+          <div class="checkbox-group">
+            <label class="checkbox"><input type="checkbox" checked> Furniture (14)</label>
+            <label class="checkbox"><input type="checkbox" checked> Lighting (8)</label>
+            <label class="checkbox"><input type="checkbox"> Textiles (9)</label>
+            <label class="checkbox"><input type="checkbox"> Ceramics (6)</label>
+            <label class="checkbox"><input type="checkbox"> Accessories (5)</label>
+          </div>
+        </div>
+        <div class="card arch-card-pad">
+          <h3>Price</h3>
+          <div class="radio-group">
+            <label class="radio"><input type="radio" name="r" checked> Any price</label>
+            <label class="radio"><input type="radio" name="r"> Under $100</label>
+            <label class="radio"><input type="radio" name="r"> $100 – $400</label>
+            <label class="radio"><input type="radio" name="r"> $400 and up</label>
+          </div>
+        </div>
+        <div class="card arch-card-pad">
+          <h3>Availability</h3>
+          <div class="checkbox-group">
+            <label class="checkbox"><input type="checkbox" checked> In stock</label>
+            <label class="checkbox"><input type="checkbox"> Preorder</label>
+          </div>
+          <button class="btn btn-outline btn-block" onclick="showToast('Filters applied — 42 products')">Apply Filters</button>
+        </div>
+      </aside>
+
+      <div class="arch-grid arch-grid--3">
+        <div class="card arch-card-pad">
+          <span class="material-symbols-outlined">chair</span>
+          <h3>Halden Lounge Chair</h3>
+          <div class="price"><span class="currency">$</span>640</div>
+          <span class="tag tag-success">In Stock</span>
+          <button class="btn btn-outline btn-block" onclick="showToast('Halden Lounge Chair added to cart')">Add to Cart</button>
+        </div>
+        <div class="card arch-card-pad">
+          <span class="material-symbols-outlined">light</span>
+          <h3>Meridian Table Lamp</h3>
+          <div class="price"><span class="currency">$</span>210</div>
+          <span class="tag tag-success">In Stock</span>
+          <button class="btn btn-outline btn-block" onclick="showToast('Meridian Table Lamp added to cart')">Add to Cart</button>
+        </div>
+        <div class="card arch-card-pad">
+          <span class="material-symbols-outlined">backpack</span>
+          <h3>Voyager Daypack</h3>
+          <div class="price"><span class="currency">$</span>128</div>
+          <span class="tag tag-warning">Low Stock</span>
+          <button class="btn btn-outline btn-block" onclick="showToast('Voyager Daypack added to cart')">Add to Cart</button>
+        </div>
+        <div class="card arch-card-pad">
+          <span class="material-symbols-outlined">local_cafe</span>
+          <h3>Kiln Ceramic Set</h3>
+          <div class="price"><span class="currency">$</span>86</div>
+          <span class="tag tag-error">Preorder</span>
+          <button class="btn btn-outline btn-block" onclick="showToast('Kiln Ceramic Set reserved — ships Oct 12')">Preorder</button>
+        </div>
+        <div class="card arch-card-pad">
+          <span class="material-symbols-outlined">watch</span>
+          <h3>Field Watch No. 4</h3>
+          <div class="price"><span class="currency">$</span>390</div>
+          <span class="tag tag-success">In Stock</span>
+          <button class="btn btn-outline btn-block" onclick="showToast('Field Watch No. 4 added to cart')">Add to Cart</button>
+        </div>
+        <div class="card arch-card-pad">
+          <span class="material-symbols-outlined">styler</span>
+          <h3>Loom Throw Blanket</h3>
+          <div class="price"><span class="currency">$</span>154</div>
+          <span class="tag tag-success">In Stock</span>
+          <button class="btn btn-outline btn-block" onclick="showToast('Loom Throw Blanket added to cart')">Add to Cart</button>
+        </div>
+        <div class="card arch-card-pad">
+          <span class="material-symbols-outlined">table_restaurant</span>
+          <h3>Norr Side Table</h3>
+          <div class="price"><span class="currency">$</span>295</div>
+          <span class="tag tag-success">In Stock</span>
+          <button class="btn btn-outline btn-block" onclick="showToast('Norr Side Table added to cart')">Add to Cart</button>
+        </div>
+        <div class="card arch-card-pad">
+          <span class="material-symbols-outlined">format_paint</span>
+          <h3>Atelier Print Series</h3>
+          <div class="price"><span class="currency">$</span>68</div>
+          <span class="tag tag-success">In Stock</span>
+          <button class="btn btn-outline btn-block" onclick="showToast('Atelier Print Series added to cart')">Add to Cart</button>
+        </div>
+        <div class="card arch-card-pad">
+          <span class="material-symbols-outlined">door_sliding</span>
+          <h3>Hebrides Wall Hooks</h3>
+          <div class="price"><span class="currency">$</span>42</div>
+          <span class="tag tag-warning">Low Stock</span>
+          <button class="btn btn-outline btn-block" onclick="showToast('Hebrides Wall Hooks added to cart')">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== YOUR CART ========== -->
+<section class="section section-alt">
+  <div class="container container-narrow">
+    <div class="section-header">
+      <h2>Your Cart</h2>
+      <p>3 items · ships Monday from 2 makers</p>
+    </div>
+    <div class="table-wrapper">
+      <table class="table">
+        <thead>
+          <tr><th>Item</th><th>Maker</th><th>Qty</th><th>Price</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Meridian Table Lamp</td><td>Studio Ljus</td><td>1</td><td>$210.00</td><td><button class="btn btn-ghost" onclick="showToast('Meridian Table Lamp removed')">Remove</button></td></tr>
+          <tr><td>Loom Throw Blanket</td><td>Hebrides Mill</td><td>2</td><td>$308.00</td><td><button class="btn btn-ghost" onclick="showToast('Loom Throw Blanket removed')">Remove</button></td></tr>
+          <tr><td>Atelier Print Series</td><td>Atelier Nord</td><td>1</td><td>$68.00</td><td><button class="btn btn-ghost" onclick="showToast('Atelier Print Series removed')">Remove</button></td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td colspan="3"><strong>Subtotal</strong></td><td colspan="2"><strong>$586.00</strong></td></tr>
+          <tr><td colspan="3">Shipping</td><td colspan="2">Free</td></tr>
+          <tr><td colspan="3"><strong>Total</strong></td><td colspan="2"><strong>$586.00</strong></td></tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="arch-row arch-row--between arch-row--wrap">
+      <span class="arch-meta"><span>🔒 Secure checkout</span><span>60-day returns</span></span>
+      <button class="btn btn-primary btn-lg" onclick="openPopup('signupPopup')">Checkout — $586.00</button>
+    </div>
+  </div>
+</section>
+
+<!-- ========== LOOKBOOK (SLIDER) ========== -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>The Autumn Lookbook</h2>
+      <p>Five rooms, styled entirely from this season's collection.</p>
+    </div>
+    <div class="slider" id="slider">
+      <div class="slider-track" id="sliderTrack">
+        <div class="slide slide-i"><h3>The Reading Corner</h3><p>Halden chair · Meridian lamp · Loom throw</p></div>
+        <div class="slide slide-ii"><h3>The Morning Table</h3><p>Kiln ceramics · linen runner · brass trivet</p></div>
+        <div class="slide slide-iii"><h3>The Workspace</h3><p>Norr table · task light · felt organizer</p></div>
+        <div class="slide slide-iv"><h3>The Entryway</h3><p>Voyager daypack · key tray · Hebrides hooks</p></div>
+        <div class="slide slide-v"><h3>The Weekend Kit</h3><p>Field watch · canvas dopp · travel journal</p></div>
+      </div>
+      <button class="slider-btn slider-prev" onclick="moveSlider(-1)" aria-label="Previous slide">❮</button>
+      <button class="slider-btn slider-next" onclick="moveSlider(1)" aria-label="Next slide">❯</button>
+      <div class="slider-dots" id="sliderDots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ORDER SUPPORT ========== -->
+<section class="section section-alt" id="contact">
+  <div class="container container-narrow">
+    <div class="section-header">
+      <h2>Order Support</h2>
+      <p>A human replies within one business day.</p>
+    </div>
+    <form id="contactForm" class="form-card" novalidate>
+      <div class="form-group">
+        <label for="cName">Full Name <span class="req">*</span></label>
+        <input type="text" id="cName" name="name" placeholder="Jordan Reyes" required>
+        <small class="error-msg" id="errName"></small>
+      </div>
+      <div class="form-group">
+        <label for="cEmail">Email <span class="req">*</span></label>
+        <input type="email" id="cEmail" name="email" placeholder="you@example.com" required>
+        <small class="error-msg" id="errEmail"></small>
+      </div>
+      <div class="form-group">
+        <label for="cPhone">Phone</label>
+        <input type="tel" id="cPhone" name="phone" placeholder="+1 (555) 000-0000">
+        <small class="error-msg" id="errPhone"></small>
+      </div>
+      <div class="form-group">
+        <label for="cSubject">Topic <span class="req">*</span></label>
+        <select id="cSubject" name="subject" required>
+          <option value="">-- Choose --</option>
+          <option>Where's my order?</option>
+          <option>Start a return</option>
+          <option>Product question</option>
+          <option>Wholesale inquiry</option>
+        </select>
+        <small class="error-msg" id="errSubject"></small>
+      </div>
+      <div class="form-group">
+        <label for="cMessage">Message <span class="req">*</span></label>
+        <textarea id="cMessage" name="message" rows="5" placeholder="Order number, if you have one..." required minlength="10"></textarea>
+        <small class="error-msg" id="errMessage"></small>
+      </div>
+      <div class="form-group">
+        <label class="checkbox"><input type="checkbox" id="cTerms" required> I agree to be contacted <span class="req">*</span></label>
+        <small class="error-msg" id="errTerms"></small>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Contact Support</button>
+      <div class="form-success" id="formSuccess" hidden>✅ Thank you! Your message has been sent successfully.</div>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4><span class="material-symbols-outlined">hub</span> Nexus</h4>
+        <p>Building the future, one element at a time.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Twitter"><span class="material-symbols-outlined">close</span></a>
+          <a href="#" aria-label="GitHub"><span class="material-symbols-outlined">code</span></a>
+          <a href="#" aria-label="LinkedIn"><span class="material-symbols-outlined">groups</span></a>
+          <a href="#" aria-label="YouTube"><span class="material-symbols-outlined">smart_display</span></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul><li><a href="#">Features</a></li><li><a href="#">Pricing</a></li><li><a href="#">Docs</a></li><li><a href="#">Changelog</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul><li><a href="#">About</a></li><li><a href="#">Blog</a></li><li><a href="#">Careers</a></li><li><a href="#">Contact</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li><li><a href="#">Cookies</a></li><li><a href="#">Licenses</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Nexus. All rights reserved.</p>
+      <p>Made with <span class="material-symbols-outlined">favorite</span> using semantic HTML</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== POPUP: LOGIN ========== -->
+<div class="popup-overlay" id="loginPopup" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+  <div class="popup">
+    <button class="popup-close" onclick="closePopup('loginPopup')" aria-label="Close"><span class="material-symbols-outlined">close</span></button>
+    <h2 id="loginTitle">Welcome Back</h2>
+    <p>Sign in to your account</p>
+    <form onsubmit="event.preventDefault(); closePopup('loginPopup'); showToast('Logged in successfully!')" novalidate>
+      <div class="form-group">
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="loginPass">Password</label>
+        <input type="password" id="loginPass" placeholder="••••••••" required>
+      </div>
+      <div class="form-group">
+        <label class="checkbox"><input type="checkbox"> Remember me</label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+      <p class="popup-footer">No account? <a href="#" onclick="closePopup('loginPopup'); openPopup('signupPopup')">Sign up</a></p>
+    </form>
+  </div>
+</div>
+
+<!-- ========== POPUP: SIGNUP ========== -->
+<div class="popup-overlay" id="signupPopup" role="dialog" aria-modal="true" aria-labelledby="signupTitle">
+  <div class="popup">
+    <button class="popup-close" onclick="closePopup('signupPopup')" aria-label="Close"><span class="material-symbols-outlined">close</span></button>
+    <h2 id="signupTitle">Create Account</h2>
+    <p>Start your free trial today</p>
+    <form onsubmit="event.preventDefault(); closePopup('signupPopup'); showToast('Account created!')" novalidate>
+      <div class="form-group">
+        <label for="suName">Full Name</label>
+        <input type="text" id="suName" placeholder="John Doe" required>
+      </div>
+      <div class="form-group">
+        <label for="suEmail">Email</label>
+        <input type="email" id="suEmail" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="suPass">Password</label>
+        <input type="password" id="suPass" placeholder="••••••••" required minlength="6">
+        <small>Password must be at least 6 characters</small>
+      </div>
+      <div class="form-group">
+        <label class="checkbox"><input type="checkbox" required> I accept the <a href="#">Terms</a></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+      <p class="popup-footer">Have an account? <a href="#" onclick="closePopup('signupPopup'); openPopup('loginPopup')">Sign in</a></p>
+    </form>
+  </div>
+</div>
+
+<!-- ========== POPUP: VIDEO ========== -->
+<div class="popup-overlay" id="videoPopup" role="dialog" aria-modal="true" aria-labelledby="videoTitle">
+  <div class="popup popup-video">
+    <button class="popup-close" onclick="closePopup('videoPopup')" aria-label="Close"><span class="material-symbols-outlined">close</span></button>
+    <h2 id="videoTitle">Product Demo</h2>
+    <div class="video-placeholder">
+      <button class="play-btn" onclick="this.parentElement.innerHTML='<iframe width=100% height=100% src=https://www.youtube.com/embed/dQw4w9WgXcQ frameborder=0 allowfullscreen></iframe>'"><span class="material-symbols-outlined">play_arrow</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== TOAST ========== -->
+<div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+<!-- ========== BACK TO TOP ========== -->
+<button class="back-to-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><span class="material-symbols-outlined">arrow_upward</span></button>
+
+<script src="../script.js"></script>
+</body>
+</html>

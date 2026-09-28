@@ -1,0 +1,64 @@
+/* ============================================================
+   Layout-only helpers for the generated archetype pages.
+   Deliberately contains NO colors, fonts, borders, shadows or
+   radii — every visual property comes from the theme's own
+   style.css. This file only arranges boxes.
+   ============================================================ */
+
+/* Clearance under the fixed theme navbar for pages without a .hero */
+.arch-top { padding-top: 7rem; }
+
+/* Two-column splits */
+.arch-split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem; align-items: center; }
+.arch-split--wide-left { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); }
+.arch-split--flip > :first-child { order: 2; }
+
+/* Main content + sidebar */
+.arch-main-aside { display: grid; grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+.arch-main-aside--aside-left { grid-template-columns: minmax(0, 1fr) minmax(0, 2.6fr); }
+.arch-aside { display: grid; gap: 1.5rem; align-content: start; position: sticky; top: 6rem; }
+
+/* Stacks and grids */
+.arch-stack { display: grid; gap: 1.5rem; }
+.arch-stack--tight { gap: 0.75rem; }
+.arch-grid { display: grid; gap: 1.25rem; }
+.arch-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.arch-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.arch-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+/* Flex rows */
+.arch-row { display: flex; align-items: center; gap: 1rem; }
+.arch-row--between { justify-content: space-between; }
+.arch-row--wrap { flex-wrap: wrap; }
+.arch-row--top { align-items: flex-start; }
+
+/* Editorial typography measures (sizes/spacing only) */
+.arch-prose { max-width: 66ch; line-height: 1.75; }
+.arch-prose p { margin: 0 0 1.1em; }
+.arch-prose h2, .arch-prose h3 { margin: 1.6em 0 0.6em; }
+.arch-prose ul, .arch-prose ol { margin: 0 0 1.1em 1.25em; }
+.arch-kicker { display: inline-block; font-size: 0.78em; text-transform: uppercase; letter-spacing: 0.18em; opacity: 0.8; margin-bottom: 0.75rem; }
+.arch-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 1.25rem; font-size: 0.82em; opacity: 0.72; }
+.arch-left { text-align: left; }
+.arch-headline--article { font-size: clamp(1.9rem, 3.6vw, 3rem); }
+.arch-fineprint { font-size: 0.72em; line-height: 1.7; opacity: 0.55; max-width: 78ch; }
+
+/* Small bits */
+.arch-avatar { display: inline-flex; align-items: center; justify-content: center; width: 2.4rem; height: 2.4rem; border-radius: 50%; border: 1px solid currentColor; font-size: 0.78em; font-weight: 700; flex: none; opacity: 0.85; }
+.arch-card-pad { padding: 1.5rem; }
+.arch-divider { border: none; border-top: 1px solid currentColor; opacity: 0.15; margin: 1.75rem 0; }
+.arch-scroll-x { overflow-x: auto; }
+
+/* Responsive collapse */
+@media (max-width: 960px) {
+  .arch-split, .arch-split--wide-left, .arch-main-aside, .arch-main-aside--aside-left, .arch-grid--3 { grid-template-columns: 1fr; }
+  .arch-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .arch-aside { position: static; }
+  .arch-split--flip > :first-child { order: 0; }
+}
+@media (max-width: 560px) {
+  .arch-grid--2, .arch-grid--4 { grid-template-columns: 1fr; }
+}
+
+/* Dimmed supporting text (theme-neutral: inherits the theme's text color) */
+.arch-muted { opacity: 0.72; font-size: 0.92em; }
